@@ -1,0 +1,10 @@
+.about-section{
+    width: 100vw;
+}
+.about-text{
+    width: 40vw;
+}
+.about-image{
+    height: 70vh;
+    object-fit: cover;
+}

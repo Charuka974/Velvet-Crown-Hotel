@@ -1,0 +1,65 @@
+        /* fixed-top - for nav bar */
+        .intro-video{
+            width: 100vw;
+            height: 80vh;
+            object-fit: contain;
+        }
+        /* Video container styling */
+        .video-container {
+            position: relative;
+            width: 100%;
+            height: 500px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+        
+        /* Video styling */
+        .intro-video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Ensures the video covers the entire area */
+        }
+        
+        /* Introduction text styling */
+        .introduction {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: white;
+            font-size: 2rem;
+            font-family: "serif";
+            background: rgba(0, 0, 0, 0.5); /* Optional: Adds a dark overlay behind text */
+            padding: 20px;
+            border-radius: 10px;
+        }
+        
+        /* Adjust text styles for better readability */
+        .introduction h1 {
+            font-size: 3rem;
+            margin: 0;
+            font-weight: bold;
+        }
+        
+        .introduction h3 {
+            font-size: 1.5rem;
+            margin-top: 10px;
+        }
+        .alert{
+            position: fixed;
+            top: 50vh;
+            right: 0;
+            z-index: 1;
+        }
+        #rating-txt{
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        .review-link{
+            text-decoration: none;
+            font-size: 1rem;
+            color: rgb(178, 152, 0);
+        }
