@@ -51,6 +51,19 @@ h1,h2,h3,h4,h5,h6{
         border-radius: 10px;
     }
 
+    .welcome-image{
+        height: 60vh; 
+        object-fit: cover;
+    }
+
+    footer{
+        background-color: #e3f2fd;
+    }
+
+    .navigation-header .navbar{
+        background-color: #e3f2fd;
+    }
+
 .alert.rating-alert {
         position: fixed;
         top: 50vh;
