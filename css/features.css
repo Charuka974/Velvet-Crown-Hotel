@@ -1,0 +1,29 @@
+
+@media (max-width: 490px) {
+    .feature-stack .row {
+      flex-direction: column !important;
+    }
+  
+    .feature-stack .col {
+      width: 100%;
+      margin-bottom: 1rem;
+    }
+  
+    .feature-stack img {
+      float: none !important;
+    }
+}
+
+.feature-stack .col {
+  height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.feature-stack .feature-image {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 12px; /* optional, for smooth corners */
+}

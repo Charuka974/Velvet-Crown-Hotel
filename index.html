@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Velvet Crown Hotel</title>
     <link rel="icon" href="/assets/images/hotel-logo-2.png" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
     <link 
         href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" 
         rel="stylesheet" 
@@ -15,6 +17,10 @@
     <link rel="stylesheet" href="/css/hero.css">
     <link rel="stylesheet" href="/css/offers.css">
     <link rel="stylesheet" href="/css/about.css">
+    <link rel="stylesheet" href="/css/home.css">
+    <link rel="stylesheet" href="/css/features.css">
+    <link rel="stylesheet" href="/css/events.css">
+    <link rel="stylesheet" href="/css/rooms.css">
 
     <style>
 
@@ -23,9 +29,9 @@
 
 </head>
 <body>
-    <header>
-        <nav nav class="navbar navbar-expand-lg" style="background-color: #e3f2fd;">
-            <div class="container-fluid">
+    <header class="navigation-header">
+        <nav nav class="navbar navbar-expand-lg fixed-top" style="background-color: #e3f2fd;">
+            <div class="container-fluid px-3">
                 <a class="navbar-brand" href="#">
                     <img src="/assets/images/hotel-logo-2.png" alt="Logo" width="24" height="24" class="d-inline-block align-text-top">
                     <strong>Velvet Crown</strong>
@@ -35,25 +41,88 @@
               </button>
               <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                  <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Home</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#">Link</a>
-                  </li>
                   <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                      Dropdown
+                      ABOUT
                     </a>
                     <ul class="dropdown-menu">
-                      <li><a class="dropdown-item" href="#">Action</a></li>
-                      <li><a class="dropdown-item" href="#">Another action</a></li>
-                      <li><hr class="dropdown-divider"></li>
-                      <li><a class="dropdown-item" href="#">Something else here</a></li>
+                      <li><a class="dropdown-item" href="#about-section">Overview</a></li>
+                      <li><a class="dropdown-item" href="#">Services & Facilities</a></li>
+                      <li><a class="dropdown-item" href="#">Map & Directions</a></li>
                     </ul>
                   </li>
+
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      ROOMS & SUITES
+                    </a>
+                    <ul class="dropdown-menu">
+                      <li><h6 class="ps-1">Rooms</h6></li>
+                      <li><a class="dropdown-item" href="#deluxeRoomHome">Deluxe</a></li>
+                      <li><a class="dropdown-item" href="#oceanViewRoomHome">Ocean View</a></li>
+                      <li><a class="dropdown-item" href="#familyRoomHome">Family</a></li>
+                      <li><hr class="dropdown-divider"></li>
+                      <li><h6 class="ps-1">Suites</h6></li>
+                      <li><a class="dropdown-item" href="#executiveSuiteHome">Executive</a></li>
+                      <li><a class="dropdown-item" href="#presidentialSuiteHome">Presidential</a></li>
+                      <li><hr class="dropdown-divider"></li>
+                      <li><a class="dropdown-item" href="#"><b>ROOMS & SUITES OVERVIEW</b></a></li>
+                    </ul>
+                  </li>
+
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      DINING
+                    </a>
+                    <ul class="dropdown-menu">
+                      <li><h6 class="ps-1">Restaurants</h6></li>
+                      <li><a class="dropdown-item" href="#">Ember & Oak</a></li>
+                      <li><a class="dropdown-item" href="#">Velvet Table</a></li>
+                      <li><a class="dropdown-item" href="#">Crown Garden</a></li>
+                      <li><a class="dropdown-item" href="#">Maison Lumière</a></li>
+                      <li><a class="dropdown-item" href="#">The Conservatory</a></li>
+                      <li><hr class="dropdown-divider"></li>
+                      <li><h6 class="ps-1">Bars & Lounges</h6></li>
+                      <li><a class="dropdown-item" href="#">The Gilded Hour</a></li>
+                      <li><a class="dropdown-item" href="#">Azure Bloom</a></li>
+                      <li><a class="dropdown-item" href="#">Solstice Pool Bar</a></li>
+                      <li><a class="dropdown-item" href="#">Larkspur Lounge</a></li>
+                      <li><a class="dropdown-item" href="#">Ember Cellar</a></li>
+                      <li><hr class="dropdown-divider"></li>
+                      <li><a class="dropdown-item" href="#"><b>DINING OVERVIEW</b></a></li>
+                    </ul>
+                  </li>
+
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      EXPERIENCE
+                    </a>
+                    <ul class="dropdown-menu">
+                      <li><a class="dropdown-item" href="#">For Kids</a></li>
+                      <li><a class="dropdown-item" href="#">Adventure Zone</a></li>
+                      <li><a class="dropdown-item" href="#">Celebrations</a></li>
+                      <li><a class="dropdown-item" href="#">Health & Leisure</a></li>
+                      <li><a class="dropdown-item" href="#">Health Club</a></li>
+                      <li><a class="dropdown-item" href="#">Chi, The Spa</a></li>
+                    </ul>
+                  </li>
+
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      EVENTS
+                    </a>
+                    <ul class="dropdown-menu">
+                      <li><a class="dropdown-item" href="#meetingsEventsHome">Meetings & Events</a></li>
+                      <li><hr class="dropdown-divider"></li>
+                      <li><a class="dropdown-item" href="#weddingsCelebrationsHome">Wedding and Celebrations</a></li>
+                    </ul>
+                  </li>
+
                   <li class="nav-item">
-                    <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+                    <a class="nav-link" href="#">GALLERY</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">OFFERS</a>
                   </li>
                 </ul>
                 <form class="d-flex" role="search">
@@ -66,33 +135,47 @@
     </header>
 
 
-    <section id="hero" class="main-page-section">
+    <section id="hero" class="main-page-section d-flex flex-column justify-content-center align-items-center">
 
         <div class="video-container">
-            <video class="intro-video" src="/assets/videos/Places _ Hotel Shoot _ Commercial Video.mp4" autoplay muted loop playsinline controls></video>
+            <video
+              class="intro-video"
+              src="/assets/videos/Places _ Hotel Shoot _ Commercial Video.mp4"
+              muted
+              autoplay
+              loop
+              playsinline
+            ></video>
             
             <div class="introduction">
                 <h1>Velvet Crown</h1>
                 <h3>Where Prestige Meets Perfection</h3>
             </div>
         </div>
-    
-        
-    
-    
-        <p>
-     
-        <h3>Velvet Crown Hotel – A Haven of Luxury and Prestige</h3>
-        Welcome to Velvet Crown Hotel, where elegance meets unparalleled comfort. Nestled in the heart of luxury, our hotel offers a blend of sophisticated design, world-class hospitality, and premium amenities tailored for the most discerning guests. <br>
-        Indulge in lavish suites adorned with velvet textures, dine in Michelin-starred restaurants, and unwind in our serene spa retreat. Whether you're here for a romantic escape, a business retreat, or a grand celebration, Velvet Crown Hotel ensures a royal experience, every time.
-            
-    
-            
-        </p>
-        <h3>Experience timeless luxury at Velvet Crown Hotel – Where Every Stay is a Regal Affair.</h3>
-    
-        <div class="alert alert-dark rating-alert shadow p-3 mb-5 bg-body-tertiary rounded" role="alert">
+      
+
+        <div class="home-intro text-center">
+          <br>
+          <h3>Velvet Crown Hotel – A Haven of Luxury and Prestige</h3>
+          <p>
+            Welcome to Velvet Crown Hotel, where elegance meets unparalleled comfort. Nestled in the heart of luxury, our hotel offers a blend of sophisticated design, world-class hospitality, and premium amenities tailored for the most discerning guests. <br>
+            Indulge in lavish suites adorned with velvet textures, dine in Michelin-starred restaurants, and unwind in our serene spa retreat. Whether you're here for a romantic escape, a business retreat, or a grand celebration, Velvet Crown Hotel ensures a royal experience, every time.
+          </p>
+          <h3>Experience timeless luxury at Velvet Crown Hotel – Where Every Stay is a Regal Affair.</h3>
+        </div>
+
+        <div class="rating-alert alert alert-dark rating-alert shadow p-3 mb-5 bg-body-tertiary rounded" role="alert">
             <span id="rating-txt">4.8</span><span id="rate-out-of">/5</span><br>Excellent <a href="#" class="review-link">Read Reviews</a>
+            <div class="dropdown-center rating-drop-down">
+              <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Review Summery
+              </button>
+              <ul class="dropdown-menu rating-summery-dropdown">
+                <li><span>TripAdvisor  4.5/5</span></li>
+                <li><span>Booking.com  8.4/10</span></li>
+                <li><span>Hotels.com  9.5/10</span></li>
+              </ul>
+            </div>
         </div>
     
 
@@ -101,56 +184,41 @@
     <br>
     <br>
 
-    <section id="offers-section" class="main-page-section">
+    <section id="offers-section" class="main-page-section text-center px-md-5">
+      <h2>Offers</h2>
+        <div class="offers-container d-flex justify-content-center">
 
-        <div class="offers d-flex justify-content-center">
-
-            <div class="card" style="width: 18rem;">
+            <div class="card text-center w-100 w-md-50">
                 <img src="/assets/images/Best Gourmet Getaways __ Hotels in Heaven®.jpeg" class="card-img-top" alt="...">
                 <div class="card-body">
-                  <h5 class="card-title">Card title</h5>
-                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                  <h5 class="card-title">Dining</h5>
+                  <p class="card-text"><b>Gourmet Getaway Package</b></p>
+                  <p class="card-text">Savor an exquisite culinary experience with a complimentary three-course dinner for two when you book a two-night stay.</p>
                 </div>
-                <ul class="list-group list-group-flush">
-                  <li class="list-group-item">An item</li>
-                  <li class="list-group-item">A second item</li>
-                  <li class="list-group-item">A third item</li>
-                </ul>
                 <div class="card-body">
-                  <a href="#" class="card-link">Card link</a>
-                  <a href="#" class="card-link">Another link</a>
+                  <a href="#" class="card-link"><button type="button" class="btn btn-outline-warning">Read More</button></a>
                 </div>
               </div>
-              <div class="card" style="width: 18rem;">
+              <div class="card text-center w-100 w-md-50">
                 <img src="/assets/images/The best hotels in Thailand.jpeg" class="card-img-top" alt="...">
                 <div class="card-body">
-                  <h5 class="card-title">Card title</h5>
-                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                  <h5 class="card-title">Wellness</h5>
+                  <p class="card-text"><b>Luxury Spa Retreat</b></p>
+                  <p class="card-text">Escape to tranquility with a 60-minute signature spa treatment included in your stay. Unwind and refresh in ultimate comfort.</p>
                 </div>
-                <ul class="list-group list-group-flush">
-                  <li class="list-group-item">An item</li>
-                  <li class="list-group-item">A second item</li>
-                  <li class="list-group-item">A third item</li>
-                </ul>
                 <div class="card-body">
-                  <a href="#" class="card-link">Card link</a>
-                  <a href="#" class="card-link">Another link</a>
+                  <a href="#" class="card-link"><button type="button" class="btn btn-outline-warning">Read More</button></a>
                 </div>
               </div>
-              <div class="card" style="width: 18rem;">
+              <div class="card text-center w-100 w-md-50">
                 <img src="/assets/images/752f5b82-caf0-4f64-9f24-53fc6e486308.jpeg" class="card-img-top" alt="...">
                 <div class="card-body">
-                  <h5 class="card-title">Card title</h5>
-                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                  <h5 class="card-title">Stay</h5>
+                  <p class="card-text"><b>Exclusive Direct Booking Offer</b></p>
+                  <p class="card-text">Book directly with us and enjoy special savings on your stay, plus a complimentary room upgrade (subject to availability).</p>
                 </div>
-                <ul class="list-group list-group-flush">
-                  <li class="list-group-item">An item</li>
-                  <li class="list-group-item">A second item</li>
-                  <li class="list-group-item">A third item</li>
-                </ul>
                 <div class="card-body">
-                  <a href="#" class="card-link">Card link</a>
-                  <a href="#" class="card-link">Another link</a>
+                  <a href="#" class="card-link"><button type="button" class="btn btn-outline-warning">Read More</button></a>
                 </div>
               </div>
 
@@ -166,29 +234,35 @@
     <br>
 
     <section id="about-section" class="main-page-section">
-
+      <h2>About</h2>
         <div class="row">
-            <div class="col-6 d-flex row align-items-center justify-content-end">
+            <div class="col-6 d-flex flex-column justify-content-center align-items-center">
                 <div class="about-text">
-                    <h2>About</h2>
-                    <p>
-                        A precious jewel strung along the Indian Ocean overlooking
-                        the historic Galle Face Green, Shangri-La Colombo celebrates
-                        the best of the city. Find sanctuary in our expansive rooms that
-                        blend modern sophistication with stunning views, indulge in world-class
-                            cuisine at our award-winning restaurants, discover a shopper's paradise
-                            at Shangri-La’s own One Galle Face Mall or host a picture-perfect event
-                            in Sri Lanka’s largest banqueting space.
-                    </p>
-                    <ul>
-                        <li>541 rooms, suites and serviced apartments with uninterrupted views</li>
-                        <li>7 restaurants & bars, including the renowned Shang Palace</li>
-                        <li>Direct access to One Galle Face Mall</li>
-                    </ul>
+                    <div class="card w-100 w-md-50">
+                      <div class="card-body">
+                        <h5 class="card-title">About</h5>
+                        <p class="card-text">
+                          An opulent retreat nestled in the heart of the city, Velvet Crown redefines
+                          luxury with its timeless elegance and modern allure. Overlooking breathtaking
+                           cityscapes and tranquil waters, our hotel offers an unparalleled sanctuary
+                            for discerning travelers. Unwind in our spacious, exquisitely designed rooms,
+                             savor world-class cuisine at our signature restaurants, indulge in curated
+                              experiences, or host a flawless event in our grand banquet halls. Whether
+                               for business or leisure, Velvet Crown is where sophistication meets comfort.
+                        </p>
+                          <ul class="about-points">
+                            <li>350 lavish rooms, suites, and residences with panoramic views</li>
+                            <li>6 exceptional dining venues, including a rooftop bar with skyline views</li>
+                            <li>Exclusive access to a premier shopping and entertainment hub</li>
+                          </ul>
+                        <a href="#" class="card-link"><button type="button" class="btn btn-outline-warning">Read More</button></a>
+                      </div>
+                    </div>
+              
                 </div>
             </div>
-            <div class="col-6 d-flex justify-content-center">
-                <img class="about-image" src="/assets/images/The Peninsula Shanghai.jpeg" class="rounded" alt="...">
+            <div class="col-6">
+              <img src="/assets/images/The Peninsula Shanghai.jpeg" class="img-fluid" alt="...">
             </div>
         </div>
 
@@ -197,14 +271,116 @@
     <br>
     <br>
 
-    <section id="rooms-section" class="main-page-section">
+    <section id="rooms-section" class="main-page-section  position-relative text-center">
+      <h2>Rooms</h2>
+     <!-- Scrollable Room Cards -->
+      <div class="scroll-container d-flex overflow-auto px-5 gap-4 justify-content-start">
+
+        <!-- Deluxe Room -->
+        <div id="deluxeRoomHome" class="room-card card flex-shrink-0">
+          <img src="/assets/images/rooms/The St_ Regis Shenzhen—Deluxe Room - scenic view.jpeg" class="card-img-top" alt="Deluxe Room">
+          <div class="card-body d-flex flex-column justify-content-center align-items-center text-center">
+            <h5 class="card-title">Deluxe Room</h5>
+            <p class="card-text">A stylish sanctuary with plush bedding, modern décor, and sweeping city views. Perfect for a relaxing stay.</p>
+            <a href="#" class="btn btn-outline-warning w-50">View More</a>
+          </div>
+        </div>
+
+        <!-- Executive Suite -->
+        <div id="executiveSuiteHome" class="room-card card flex-shrink-0">
+          <img src="/assets/images/rooms/Executive suite.jpeg" class="card-img-top" alt="Executive Suite">
+          <div class="card-body d-flex flex-column justify-content-center align-items-center text-center">
+            <h5 class="card-title">Executive Suite</h5>
+            <p class="card-text">Spacious suite with a separate living area, premium amenities, and exclusive lounge access.</p>
+            <a href="#" class="btn btn-outline-warning w-50">View More</a>
+          </div>
+        </div>
+
+        <!-- Presidential Suite -->
+        <div id="presidentialSuiteHome" class="room-card card flex-shrink-0">
+          <img src="/assets/images/rooms/Presidential Suite _ Alexandria, Egypt Suites _ Four Seasons Hotel.jpeg" class="card-img-top" alt="Presidential Suite">
+          <div class="card-body d-flex flex-column justify-content-center align-items-center text-center">
+            <h5 class="card-title">Presidential Suite</h5>
+            <p class="card-text">The pinnacle of luxury featuring expansive space, private balcony, and a personal butler service.</p>
+            <a href="#" class="btn btn-outline-warning w-50">View More</a>
+          </div>
+        </div>
+
+        <!-- Ocean View Room -->
+        <div id="oceanViewRoomHome" class="room-card card flex-shrink-0">
+          <img src="/assets/images/rooms/ocean view room.jpeg" class="card-img-top" alt="Ocean View Room">
+          <div class="card-body d-flex flex-column justify-content-center align-items-center text-center">
+            <h5 class="card-title">Ocean View Room</h5>
+            <p class="card-text">Wake up to breathtaking sea views in a cozy and contemporary space designed for serenity.</p>
+            <a href="#" class="btn btn-outline-warning w-50">View More</a>
+          </div>
+        </div>
+
+        <!-- Family Room -->
+        <div id="familyRoomHome" class="room-card card flex-shrink-0">
+          <img src="/assets/images/rooms/family room.jpeg" class="card-img-top" alt="Family Room">
+          <div class="card-body d-flex flex-column justify-content-center align-items-center text-center">
+            <h5 class="card-title">Family Room</h5>
+            <p class="card-text">Spacious and child-friendly, this room is ideal for families with a king bed and twin beds setup.</p>
+            <a href="#" class="btn btn-outline-warning w-50">View More</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Arrow Buttons at Bottom -->
+      <div class="d-flex justify-content-center mt-4">
+        <button id="scroll-left" class="btn btn-warning mx-4">&#10094;</button>
+        <button id="scroll-right" class="btn btn-warning mx-4">&#10095;</button>
+      </div>
+
+      <br>
+      <br>
+      <a href="#" class="card-link p-3 rounded bg-white"><button type="button" class="btn btn-outline-warning">ROOMS & SUITES OVERVIEW</button></a>
 
     </section>
 
     <br>
     <br>
 
-    <section id="features-section" class="main-page-section">
+    <section id="features-section" class="main-page-section d-flex flex-column justify-content-center align-items-center">
+      <h2 class="features-h2">Elevated Experience</h2>
+      <p class="features-text">Unveil a world of refined indulgence, where immersive dining, serene wellness, and captivating ambiance redefine luxury at every turn.</p>
+
+      <div class="container text-center feature-stack">
+        <div class="row flex-column flex-md-row">
+          <div class="col">
+            <img src="/assets/images/experiences/15a791ca-1f1a-45b9-b605-bbbc094b29bd.jpeg" class="img-fluid rounded float-end feature-image" alt="...">
+          </div>
+          <div class="col d-flex justify-content-center align-items-center">
+            <div class="card w-100 w-md-50">
+              <div class="card-body">
+                <h5 class="card-title">Underground Sophistication</h5>
+                <p class="card-text">
+                  Step into a mesmerizing cave-style bar, where warm golden lights illuminate an exquisite collection of spirits. Experience the perfect fusion of mystery and indulgence in this hidden gem.
+                </p>
+                <a href="#" class="card-link"><button type="button" class="btn btn-outline-warning">Read More</button></a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row flex-column flex-md-row">
+          <div class="col d-flex justify-content-center align-items-center">
+            <div class="card w-100 w-md-50">
+              <div class="card-body">
+                <h5 class="card-title">Poolside Elegance</h5>
+                <p class="card-text">
+                  Immerse yourself in a serene oasis where candlelit lounges meet the shimmering reflection of the pool. Unwind in a setting where luxury and tranquility blend seamlessly under the stars.
+                </p>
+                <a href="#" class="card-link"><button type="button" class="btn btn-outline-warning">Read More</button></a>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <img src="/assets/images/experiences/Phuket Pictures _ Rosewood Phuket Thailand Resort Gallery.jpeg" class="feature-image img-fluid rounded float-start" alt="...">
+          </div>
+        </div>
+      </div>
+
 
     </section>
 
@@ -216,35 +392,28 @@
 
       <div class="event-container container text-center d-flex justify-content-center">
         
-        <div class="card" style="width: 18rem;">
-          <img src="..." class="card-img-top" alt="...">
+        <div id="weddingsCelebrationsHome" class="card w-100 w-md-50">
+          <img src="/assets/images/events/3521e5de-0b7f-4336-97bc-c96800cc780a.jpeg" class="card-img-top" alt="...">
           <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
+            <h5 class="card-title">Weddings & Celebrations</h5>
+            <p class="card-text">
+              Say "I do" in pure elegance at Velvet Crown Hotel. With breathtaking venues and personalized service, we create unforgettable moments that bring your dream wedding to life.
+            </p>
+            <a href="#" class="btn"><button type="button" class="btn btn-outline-warning">Read More</button></a>
           </div>
         </div>
 
-        <div class="card" style="width: 18rem;">
-          <img src="..." class="card-img-top" alt="...">
+        <div id="meetingsEventsHome" class="card w-100 w-md-50">
+          <img src="/assets/images/events/Meeting Room.jpeg" class="card-img-top" alt="...">
           <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
+            <h5 class="card-title">Meetings & Events</h5>
+            <p class="card-text">
+              Host seamless and sophisticated events at Velvet Crown Hotel, where luxury meets precision. From corporate meetings to grand celebrations, our stunning venues and expert planning ensure every moment is extraordinary.            
+            </p>
+            <a href="#" class="btn"><button type="button" class="btn btn-outline-warning">Read More</button></a>
           </div>
         </div>
 
-          <!-- <div class="row">
-
-            <div class="col">
-              
-            </div>
-
-            <div class="col">
-              
-            </div>
-
-          </div> -->
       </div>
         
     </section>
@@ -274,9 +443,9 @@
     
                 <div class="col-md-4">
                     <h5>Follow Us</h5>
-                    <a href="#" class="text-white me-3"><i class="fab fa-facebook"></i></a>
-                    <a href="#" class="text-white me-3"><i class="fab fa-twitter"></i></a>
-                    <a href="#" class="text-white me-3"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-links text-black me-3"><i class="fab fa-facebook"></i></a>
+                    <a href="#" class="social-links text-black me-3"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-links text-black me-3"><i class="fab fa-instagram"></i></a>
                 </div>
             </div>
     
@@ -285,6 +454,8 @@
             </div>
         </div>
     </footer>
+
+    <script src="/js/Home.js"></script>
         
 
     <script 
