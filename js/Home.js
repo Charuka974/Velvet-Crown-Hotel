@@ -26,4 +26,6 @@ const scrollContainer = document.querySelector('.scroll-container');
 
   scrollContainer.addEventListener('scroll', updateFocusCard);
   window.addEventListener('load', updateFocusCard);
-//-------------------------------------------------------------------------------
+
+
+
