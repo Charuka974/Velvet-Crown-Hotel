@@ -1,0 +1,33 @@
+body {
+    background-color: #f8f9fa;
+  }
+  h1{
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: bold;
+  }
+  .experience-section {
+    padding: 60px 15px;
+  }
+  .experience-card {
+    margin-bottom: 60px;
+  }
+  .experience-img {
+    width: 80%;
+    height: 500px;
+    object-fit: cover;
+    border-radius: 12px;
+    margin-bottom: 20px;
+  }
+  .card-title {
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: bold;
+    margin-bottom: 15px;
+  }
+  .card-text {
+    font-size: 1rem;
+  }
+  ul.details-list {
+    text-align: left;
+    padding-left: 1.5rem;
+    margin-top: 15px;
+  }
