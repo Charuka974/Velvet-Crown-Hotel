@@ -1,0 +1,13 @@
+.gallery-img {
+    object-fit: cover;
+    height: 250px;
+    transition: transform 0.3s ease;
+  }
+  .gallery-img:hover {
+    transform: scale(1.05);
+  }
+  .gallery-title {
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: 700;
+    font-size: 2rem;
+  }

@@ -1,4 +1,4 @@
-// rooms section - home
+// rooms section - home -----------------------------------------------------
 const scrollContainer = document.querySelector('.scroll-container');
   const cards = document.querySelectorAll('.room-card');
   const scrollLeft = document.getElementById('scroll-left');
@@ -26,3 +26,4 @@ const scrollContainer = document.querySelector('.scroll-container');
 
   scrollContainer.addEventListener('scroll', updateFocusCard);
   window.addEventListener('load', updateFocusCard);
+//-------------------------------------------------------------------------------
