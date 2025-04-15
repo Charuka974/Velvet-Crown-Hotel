@@ -45,7 +45,6 @@ h1,h2,h3,h4,h5,h6{
         text-align: center;
         color: white;
         font-size: 2rem;
-        font-family: "serif";
         background: rgba(0, 0, 0, 0.5);
         padding: 20px;
         border-radius: 10px;
@@ -58,6 +57,10 @@ h1,h2,h3,h4,h5,h6{
 
     footer{
         background-color: #e3f2fd;
+    }
+    .hover-link:hover {
+        color: #007bff;
+        text-decoration: underline;
     }
 
     .navigation-header .navbar{
@@ -119,7 +122,7 @@ h1,h2,h3,h4,h5,h6{
 }
 
 .introduction h1 {
-        font-size: 2rem;
+        font-size: 3rem;
         font-weight: bold;
         margin: 0;
 }

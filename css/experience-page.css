@@ -11,3 +11,20 @@
     border-radius: 12px; 
     margin-bottom: 20px;
   }
+
+  .experience-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .experience-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.2);
+  }
+  .card-title {
+    font-size: 1.25rem;
+  }
+  .experience-card .card-img-top {
+    object-fit: cover;
+    height: 500px;
+    width: 100%;
+  }
+  

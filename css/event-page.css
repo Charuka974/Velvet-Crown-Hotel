@@ -1,0 +1,17 @@
+.event-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.event-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.btn-warning {
+    transition: background-color 0.3s ease;
+}
+
+.btn-warning:hover {
+    background-color: #f39c12;
+    color: white;
+}

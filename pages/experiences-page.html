@@ -12,8 +12,10 @@
     integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" 
     crossorigin="anonymous"
     >
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
     <link rel="stylesheet" href="/css/experience-page.css">
     <link rel="stylesheet" href="/css/page-styles.css">
+    <link rel="stylesheet" href="/css/styles.css">
 
 </head>
 <body>
@@ -25,9 +27,91 @@
         </div>
     </section>
 
-    <div class="container experience-section text-center">
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+
+        <!-- Experience Card: Underground Sophistication -->
+        <div class="col">
+          <div id="barExperience" class="experience-card card h-100 shadow rounded-4 overflow-hidden text-center border-0">
+            <img src="/assets/images/experiences/15a791ca-1f1a-45b9-b605-bbbc094b29bd.jpeg" class="card-img-top rounded-top-4" alt="Underground Bar">
+            <div class="card-body px-4 pb-4">
+              <h5 class="card-title fw-bold text-uppercase">Underground Sophistication</h5>
+              <p class="card-text text-muted">Step into our hidden speakeasy, where amber lighting glows against vaulted stone walls, and an elite selection of rare spirits awaits your discovery.</p>
+              <ul class="list-unstyled text-start small mt-3 ps-4">
+                <li><i class="fa-solid fa-cocktail me-2 gold-color-txt"></i>Rare vintage liquors & mixologist-crafted cocktails</li>
+                <li><i class="fa-solid fa-lightbulb me-2 gold-color-txt"></i>Low golden lighting & velvet interiors</li>
+                <li><i class="fa-solid fa-user-secret me-2 gold-color-txt"></i>Invitation-only entry for a true VIP vibe</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Experience Card: Poolside Elegance -->
+        <div class="col">
+          <div id="poolsideExperience" class="experience-card card h-100 shadow rounded-4 overflow-hidden text-center border-0">
+            <img src="/assets/images/experiences/Phuket Pictures _ Rosewood Phuket Thailand Resort Gallery.jpeg" class="card-img-top rounded-top-4" alt="Poolside Elegance">
+            <div class="card-body px-4 pb-4">
+              <h5 class="card-title fw-bold text-uppercase gold-color-txt">Poolside Elegance</h5>
+              <p class="card-text text-muted">As dusk falls, our tranquil pool transforms into a haven of twilight elegance—flickering candles, soft music, and the shimmer of water beneath the stars.</p>
+              <ul class="list-unstyled text-start small mt-3 ps-4">
+                <li><i class="fa-solid fa-water me-2 gold-color-txt"></i>Twilight reflections and ambient lighting</li>
+                <li><i class="fa-solid fa-chair me-2 gold-color-txt"></i>Luxurious loungers & attentive poolside service</li>
+                <li><i class="fa-solid fa-umbrella-beach me-2 gold-color-txt"></i>Secluded cabanas for private moments</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Experience Card: Spa Serenity -->
+        <div class="col">
+          <div id="spaExperience" class="experience-card card h-100 shadow rounded-4 overflow-hidden text-center border-0">
+            <img src="/assets/images/gallery/hotel-spa.webp" class="card-img-top rounded-top-4" alt="Spa Serenity">
+            <div class="card-body px-4 pb-4">
+              <h5 class="card-title fw-bold text-uppercase gold-color-txt">Spa Serenity</h5>
+              <p class="card-text text-muted">Immerse yourself in an oasis of calm. Our nature-inspired spa blends earthy textures with fragrant oils to create an unforgettable journey of renewal.</p>
+              <ul class="list-unstyled text-start small mt-3 ps-4">
+                <li><i class="fa-solid fa-spa me-2 gold-color-txt"></i>Holistic treatments by world-class therapists</li>
+                <li><i class="fa-solid fa-leaf me-2 gold-color-txt"></i>Eco-luxury oils and botanicals</li>
+                <li><i class="fa-solid fa-person-booth me-2 gold-color-txt"></i>Private spa suites with outdoor tranquility zones</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Experience Card: Adventure Park Thrills -->
+        <div class="col">
+          <div id="adventureExperience" class="experience-card card h-100 shadow rounded-4 overflow-hidden text-center border-0">
+            <img src="/assets/images/gallery/The Best Outdoor Activities on Long Island - Mapping Megan.jpeg" class="card-img-top rounded-top-4" alt="Adventure Park">
+            <div class="card-body px-4 pb-4">
+              <h5 class="card-title fw-bold text-uppercase gold-color-txt">Adventure Park Thrills</h5>
+              <p class="card-text text-muted">Reconnect with your wild side in our on-site nature park, where adrenaline meets serenity across zip lines, forest trails, and elevated rope challenges.</p>
+              <ul class="list-unstyled text-start small mt-3 ps-4">
+                <li><i class="fa-solid fa-person-hiking me-2 gold-color-txt"></i>Multi-level zip lines and aerial courses</li>
+                <li><i class="fa-solid fa-tree me-2 gold-color-txt"></i>Verdant forest paths & outdoor play zones</li>
+                <li><i class="fa-solid fa-user-shield me-2 gold-color-txt"></i>Professionally supervised for all ages</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Experience Card: Woodland Whimsy -->
+        <div class="col">
+          <div id="kidsExperience" class="experience-card card h-100 shadow rounded-4 overflow-hidden text-center border-0">
+            <img src="/assets/images/gallery/Baumhaus und Hängeschaukeln im Sandspielbereich.jpeg" class="card-img-top rounded-top-4" alt="Kids' Treehouse Play Area">
+            <div class="card-body px-4 pb-4">
+              <h5 class="card-title fw-bold text-uppercase gold-color-txt">Woodland Whimsy</h5>
+              <p class="card-text text-muted">A fairytale forest escape for children to imagine, explore, and play—featuring custom-built treehouses, soft-sand zones, and shaded hideaways.</p>
+              <ul class="list-unstyled text-start small mt-3 ps-4">
+                <li><i class="fa-solid fa-tree me-2 gold-color-txt"></i>Handcrafted treehouses & cozy hammocks</li>
+                <li><i class="fa-solid fa-children me-2 gold-color-txt"></i>Soft sand floor & tactile play experiences</li>
+                <li><i class="fa-solid fa-shield-heart me-2 gold-color-txt"></i>Secure, shaded & professionally monitored</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+
     
-        <div id="barExperience" class="experience-card card text-center p-4 d-flex flex-column align-items-center rounded-4 shadow">
+        <!-- <div id="barExperience" class="experience-card card text-center p-4 d-flex flex-column align-items-center rounded-4 shadow">
           <img src="/assets/images/experiences/15a791ca-1f1a-45b9-b605-bbbc094b29bd.jpeg" alt="Underground Bar" class="experience-img">
           <h2 class="card-title">Underground Sophistication</h2>
           <p class="card-text">
@@ -90,14 +174,44 @@
             <li>Soft sand base for safe exploration</li>
             <li>Shaded, secure, and supervised</li>
           </ul>
-        </div>
+        </div> -->
     
       </div>
 
       <section class="text-center py-5">
-        <a href="/index.html" class="btn btn-outline-warning shadow">Back to Home</a>
+        <a href="/index.html" class="btn btn-outline w-50 shadow btn-gold-click-effect">Back to Home</a>
       </section>
 
+      <footer class="text-black pt-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h5>About Us</h5>
+                    <p>We provide top-quality services. Follow us for updates.</p>
+                </div>
+    
+                <div class="col-md-4">
+                    <h5>Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="/index.html" class="text-black text-decoration-none">Home</a></li>
+                        <li><a href="#" class="text-black text-decoration-none">Contact</a></li>
+                        <li><a href="#" class="text-black text-decoration-none">Privacy Policy</a></li>
+                    </ul>
+                </div>
+    
+                <div class="col-md-4">
+                    <h5>Follow Us</h5>
+                    <!-- <a href="#" class="social-links text-black me-3"><i class="fab fa-facebook"></i></a> -->
+                    <a href="https://www.linkedin.com/in/charuka-hansaja-756070346/" class="social-links text-black me-3"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://github.com/Charuka974" class="social-links text-black me-3"><i class="fab fa-github"></i></a>
+                </div>
+            </div>
+    
+            <div class="text-center py-3 mt-3 border-top">
+                <p class="mb-0">&copy; 2024 Velvet Crown. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
 
     <script 
         src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" 

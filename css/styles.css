@@ -1,0 +1,23 @@
+.btn-gold-click-effect {
+    color: #B29800;
+    border: 2px solid #B29800;
+    transition: all 0.15s ease-in-out;
+    font-weight: 600;
+  }
+  
+  .btn-gold-click-effect:active {
+    transform: scale(0.97);
+    box-shadow: inset 0 3px 6px rgba(0, 0, 0, 0.2);
+  }
+
+  
+  .btn-gold-click-effect:hover {
+    background-color: rgb(178, 152, 0);
+    color: white !important;
+  }
+  
+  
+
+  .gold-color-txt{
+    color: #B29800;
+  }
