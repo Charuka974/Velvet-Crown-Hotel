@@ -55,13 +55,6 @@ h1,h2,h3,h4,h5,h6{
         object-fit: cover;
     }
 
-    footer{
-        background-color: #e3f2fd;
-    }
-    .hover-link:hover {
-        color: #007bff;
-        text-decoration: underline;
-    }
 
     .navigation-header .navbar{
         background-color: #e3f2fd;
