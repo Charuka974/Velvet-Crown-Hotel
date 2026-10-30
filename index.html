@@ -1,727 +1,899 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Velvet Crown Hotel</title>
-    <link rel="icon" href="/assets/images/hotel-logo-2.png" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Velvet Crown Hotel — Where Prestige Meets Perfection. Experience ultra-luxury rooms, world-class dining, and immersive spa retreats in an iconic landmark property.">
+  <meta property="og:title" content="Velvet Crown Hotel | Ultra-Luxury Experience">
+  <meta property="og:description" content="Where Prestige Meets Perfection. Book your royal stay at Velvet Crown Hotel.">
+  <title>Velvet Crown Hotel — Where Prestige Meets Perfection</title>
 
-    <link 
-        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" 
-        rel="stylesheet" 
-        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" 
-        crossorigin="anonymous"
-    >
-
-    <link rel="stylesheet" href="/css/offers.css">
-    <link rel="stylesheet" href="/css/about.css">
-    <link rel="stylesheet" href="/css/home.css">
-    <link rel="stylesheet" href="/css/features.css">
-    <link rel="stylesheet" href="/css/events.css">
-    <link rel="stylesheet" href="/css/rooms.css">
-    <link rel="stylesheet" href="/css/styles.css">
-    
-
+  <link rel="icon" href="/assets/images/hotel-logo-2.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <link rel="stylesheet" href="/css/styles.css">
 </head>
 <body>
-    <header class="navigation-header">
-        <nav nav class="navbar navbar-expand-lg fixed-top shadow">
-            <div class="container-fluid px-3">
-                <a class="navbar-brand" href="#">
-                    <img src="/assets/images/hotel-logo-2.png" alt="Logo" width="24" height="24" class="d-inline-block align-text-top">
-                    <strong>Velvet Crown</strong>
-                </a>
-              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-              </button>
-              <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                  <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                      ABOUT
-                    </a>
-                    <ul class="dropdown-menu">
-                      <li><a class="dropdown-item" href="#about-section">Overview</a></li>
-                      <li><a class="dropdown-item" href="#map-section">Map & Directions</a></li>
-                    </ul>
-                  </li>
 
-                  <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                      ROOMS & SUITES
-                    </a>
-                    <ul class="dropdown-menu">
-                      <li><h6 class="ps-1">Rooms</h6></li>
-                      <li><a class="dropdown-item" href="#deluxeRoomHome">Deluxe</a></li>
-                      <li><a class="dropdown-item" href="#oceanViewRoomHome">Ocean View</a></li>
-                      <li><a class="dropdown-item" href="#familyRoomHome">Family</a></li>
-                      <li><hr class="dropdown-divider"></li>
-                      <li><h6 class="ps-1">Suites</h6></li>
-                      <li><a class="dropdown-item" href="#executiveSuiteHome">Executive</a></li>
-                      <li><a class="dropdown-item" href="#presidentialSuiteHome">Presidential</a></li>
-                      <li><hr class="dropdown-divider"></li>
-                      <li><a class="dropdown-item" href="/pages/rooms-page.html"><b>ROOMS & SUITES OVERVIEW</b></a></li>
-                    </ul>
-                  </li>
+<!-- 3D Background Canvas -->
+<canvas id="bg-canvas"></canvas>
 
-                  <!-- <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                      DINING
-                    </a>
-                    <ul class="dropdown-menu">
-                      <li><h6 class="ps-1">Restaurants</h6></li>
-                      <li><a class="dropdown-item" href="#">Ember & Oak</a></li>
-                      <li><a class="dropdown-item" href="#">Velvet Table</a></li>
-                      <li><a class="dropdown-item" href="#">Crown Garden</a></li>
-                      <li><a class="dropdown-item" href="#">Maison Lumière</a></li>
-                      <li><a class="dropdown-item" href="#">The Conservatory</a></li>
-                      <li><hr class="dropdown-divider"></li>
-                      <li><h6 class="ps-1">Bars & Lounges</h6></li>
-                      <li><a class="dropdown-item" href="#">The Gilded Hour</a></li>
-                      <li><a class="dropdown-item" href="#">Azure Bloom</a></li>
-                      <li><a class="dropdown-item" href="#">Solstice Pool Bar</a></li>
-                      <li><a class="dropdown-item" href="#">Larkspur Lounge</a></li>
-                      <li><a class="dropdown-item" href="#">Ember Cellar</a></li>
-                      <li><hr class="dropdown-divider"></li>
-                      <li><a class="dropdown-item" href="#"><b>DINING OVERVIEW</b></a></li>
-                    </ul>
-                  </li> -->
+<!-- Custom Cursor -->
+<div id="cursor-dot"></div>
+<div id="cursor-ring"></div>
 
-                  <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                      EXPERIENCE
-                    </a>
-                    <ul class="dropdown-menu">
-                      <li><a class="dropdown-item" href="#kidsExperienceCard">Kids</a></li>
-                      <li><a class="dropdown-item" href="#barExperienceCard">Bar</a></li>
-                      <li><a class="dropdown-item" href="#adventureExperienceCard">Adventure Zone</a></li>
-                      <li><a class="dropdown-item" href="#poolsideEleganceExperienceCard">Starlit Serenity</a></li>
-                      <li><a class="dropdown-item" href="#spaExperienceCard">Health & Wellness</a></li>
-                      <li><hr class="dropdown-divider"></li>
-                      <li><a class="dropdown-item" href="/pages/experiences-page.html"><b>EXPERIENCES OVERVIEW</b></a></li>
-                    </ul>
-                  </li>
+<!-- Booking Drawer Overlay -->
+<div id="booking-drawer-overlay"></div>
 
-                  <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                      EVENTS
-                    </a>
-                    <ul class="dropdown-menu">
-                      <li><a class="dropdown-item" href="#meetingsEventsHome">Meetings & Events</a></li>
-                      <li><hr class="dropdown-divider"></li>
-                      <li><a class="dropdown-item" href="#weddingsCelebrationsHome">Wedding and Celebrations</a></li>
-                      <li><hr class="dropdown-divider"></li>
-                      <li><a class="dropdown-item" href="/pages/events-page.html"><b>MORE EVENTS</b></a></li>
-                    </ul>
-                  </li>
+<!-- ============================================================
+     BOOKING DRAWER
+     ============================================================ -->
+<aside id="booking-drawer" role="dialog" aria-label="Book Your Stay">
+  <div class="drawer-header">
+    <h2 class="drawer-title serif">Book Your Stay</h2>
+    <button class="drawer-close" aria-label="Close booking drawer"><i class="fa-solid fa-xmark"></i></button>
+  </div>
 
-                  <li class="nav-item">
-                    <a class="nav-link" href="/pages/gallery-page.html">GALLERY</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#offers-section">OFFERS</a>
-                  </li>
-                </ul>
-                <form class="d-flex" role="search" id="nav-search-form">
-                  <input id="siteSearchInput" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                  <button class="btn btn-outline-success" type="submit">Search</button>  
-                </form>
-              </div>
-            </div>
-          </nav>
-    </header>
+  <div class="form-group">
+    <label class="form-label" for="booking-room">Room / Suite</label>
+    <select id="booking-room" class="form-control-dark">
+      <option value="deluxe">Deluxe Room — $240/night</option>
+      <option value="ocean_view">Ocean View Room — $320/night</option>
+      <option value="family">Family Room — $380/night</option>
+      <option value="executive">Executive Suite — $410/night</option>
+      <option value="penthouse">Penthouse Suite — $560/night</option>
+      <option value="presidential">Presidential Suite — $890/night</option>
+    </select>
+  </div>
 
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem">
+    <div class="form-group">
+      <label class="form-label" for="booking-checkin">Check-In</label>
+      <input id="booking-checkin" type="date" class="form-control-dark">
+    </div>
+    <div class="form-group">
+      <label class="form-label" for="booking-checkout">Check-Out</label>
+      <input id="booking-checkout" type="date" class="form-control-dark">
+    </div>
+  </div>
 
-    <section id="hero" class="main-page-section d-flex flex-column justify-content-center align-items-center">
+  <div class="form-group">
+    <label class="form-label" for="booking-guests">Guests</label>
+    <select id="booking-guests" class="form-control-dark">
+      <option value="1">1 Guest</option>
+      <option value="2" selected>2 Guests</option>
+      <option value="3">3 Guests</option>
+      <option value="4">4 Guests</option>
+      <option value="5">5+ Guests (Contact Us)</option>
+    </select>
+  </div>
 
-        <div class="video-container">
-            <video
-              class="intro-video"
-              src="/assets/videos/Places _ Hotel Shoot _ Commercial Video.mp4"
-              muted
-              autoplay
-              loop
-              playsinline
-              alt="intro video"
-            ></video>
-            
-            <div class="introduction">
-                <h1>Velvet Crown</h1>
-                <h3>Where Prestige Meets Perfection</h3>
-            </div>
+  <div class="form-group">
+    <label class="form-label" for="booking-name">Full Name</label>
+    <input id="booking-name" type="text" placeholder="Your full name" class="form-control-dark">
+  </div>
+  <div class="form-group">
+    <label class="form-label" for="booking-email">Email Address</label>
+    <input id="booking-email" type="email" placeholder="your@email.com" class="form-control-dark">
+  </div>
+
+  <div class="price-display">
+    <div class="price-display-label">Estimated Total</div>
+    <div class="price-display-total" id="price-total">$240</div>
+    <div class="price-display-label" id="price-nights">1 night</div>
+  </div>
+
+  <button class="btn-primary-gold w-full" style="justify-content:center;width:100%">
+    <i class="fa-solid fa-crown"></i> Confirm Reservation
+  </button>
+  <p style="font-size:0.75rem;color:var(--muted);text-align:center;margin-top:1rem">
+    Free cancellation up to 48 hours before check-in. Best rate guaranteed.
+  </p>
+</aside>
+
+<!-- ============================================================
+     SEARCH OVERLAY
+     ============================================================ -->
+<div id="search-overlay" role="search" aria-label="Site Search">
+  <div class="search-box-wrap">
+    <input id="search-input" class="search-input" type="search" placeholder="Search rooms, dining, spa, events…" autocomplete="off">
+    <button class="search-close" aria-label="Close search"><i class="fa-solid fa-xmark"></i></button>
+  </div>
+  <div id="search-results" class="search-results"></div>
+  <p style="font-size:0.72rem;color:var(--muted);margin-top:1rem;font-family:var(--font-display);letter-spacing:0.18em">
+    PRESS ESC TO CLOSE &nbsp;·&nbsp; CTRL+K TO TOGGLE
+  </p>
+</div>
+
+<!-- ============================================================
+     NAVIGATION
+     ============================================================ -->
+<nav class="nav-bar" role="navigation" aria-label="Main Navigation">
+  <a class="nav-logo" href="/" aria-label="Velvet Crown Hotel Home">
+    <img src="/assets/images/hotel-logo-2.png" alt="Velvet Crown Hotel Logo">
+    <span class="nav-logo-text">Velvet Crown</span>
+  </a>
+
+  <ul class="nav-links" role="list">
+    <li class="nav-dropdown">
+      <a href="#about-section">About</a>
+      <ul class="nav-dropdown-menu">
+        <li><span class="drop-header">The Hotel</span></li>
+        <li><a href="#about-section">Overview</a></li>
+        <li><a href="#ratings-section">Guest Reviews</a></li>
+        <li><hr></li>
+        <li><a href="#map-section">Map &amp; Directions</a></li>
+      </ul>
+    </li>
+    <li class="nav-dropdown">
+      <a href="/pages/rooms-page.html">Rooms &amp; Suites</a>
+      <ul class="nav-dropdown-menu">
+        <li><span class="drop-header">Rooms</span></li>
+        <li><a href="/pages/rooms-page.html#deluxeRoomCard">Deluxe Room</a></li>
+        <li><a href="/pages/rooms-page.html#oceanViewRoomCard">Ocean View Room</a></li>
+        <li><a href="/pages/rooms-page.html#familyRoomCard">Family Room</a></li>
+        <li><hr></li>
+        <li><span class="drop-header">Suites</span></li>
+        <li><a href="/pages/rooms-page.html#executiveSuiteCard">Executive Suite</a></li>
+        <li><a href="/pages/rooms-page.html#pentRoomCard">Penthouse Suite</a></li>
+        <li><a href="/pages/rooms-page.html#presidentialSuiteCard">Presidential Suite</a></li>
+        <li><hr></li>
+        <li><a href="/pages/rooms-page.html" style="color:var(--gold-light);font-weight:500">View All Rooms →</a></li>
+      </ul>
+    </li>
+    <li class="nav-dropdown">
+      <a href="/pages/experiences-page.html">Experiences</a>
+      <ul class="nav-dropdown-menu">
+        <li><a href="/pages/experiences-page.html#spaCard">Velvet Spa &amp; Wellness</a></li>
+        <li><a href="/pages/experiences-page.html#barCard">Underground Bar</a></li>
+        <li><a href="/pages/experiences-page.html#poolCard">Infinity Pool</a></li>
+        <li><a href="/pages/experiences-page.html#adventureCard">Woodland Adventure</a></li>
+        <li><hr></li>
+        <li><a href="/pages/experiences-page.html" style="color:var(--gold-light);font-weight:500">All Experiences →</a></li>
+      </ul>
+    </li>
+    <li class="nav-dropdown">
+      <a href="/pages/events-page.html">Events</a>
+      <ul class="nav-dropdown-menu">
+        <li><a href="/pages/events-page.html#weddingCard">Weddings &amp; Celebrations</a></li>
+        <li><a href="/pages/events-page.html#corporateCard">Corporate Meetings</a></li>
+        <li><a href="/pages/events-page.html#socialCard">Social Gatherings</a></li>
+      </ul>
+    </li>
+    <li><a href="/pages/gallery-page.html">Gallery</a></li>
+    <li><a href="/pages/offers-page.html">Offers</a></li>
+  </ul>
+
+  <div class="nav-controls">
+    <button class="btn-search-nav" aria-label="Open Search" data-open-search>
+      <i class="fa-solid fa-magnifying-glass"></i>
+    </button>
+    <button class="btn-sound-nav btn-sound-nav" id="nav-sound-btn" aria-label="Toggle ambient sound">
+      <i class="fa-solid fa-volume-xmark"></i>
+    </button>
+    <button class="btn-book" data-open-booking="">
+      Book Stay
+    </button>
+    <button class="nav-hamburger" aria-label="Open mobile menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- Mobile Nav Overlay -->
+<div class="nav-mobile-overlay" role="dialog" aria-label="Mobile Navigation">
+  <button class="nav-mobile-close" aria-label="Close menu" style="position:absolute;top:1.5rem;right:1.5rem;background:transparent;border:1px solid var(--gold-border);color:var(--white-dim);width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.1rem;cursor:pointer;">
+    <i class="fa-solid fa-xmark"></i>
+  </button>
+  <a href="#about-section">About</a>
+  <a href="/pages/rooms-page.html">Rooms &amp; Suites</a>
+  <a href="/pages/experiences-page.html">Experiences</a>
+  <a href="/pages/events-page.html">Events</a>
+  <a href="/pages/gallery-page.html">Gallery</a>
+  <a href="/pages/offers-page.html">Offers</a>
+  <a href="#" data-open-booking="" class="btn-primary-gold mt-3">Book Stay</a>
+</div>
+
+<!-- ============================================================
+     PAGE WRAPPER
+     ============================================================ -->
+<div class="page-wrapper">
+
+  <!-- ====================== HERO ====================== -->
+  <section class="hero" id="hero">
+    <div class="hero-bg">
+      <img src="/assets/images/roberto-nickson-MA82mPIZeGI-unsplash.jpg" alt="Velvet Crown Hotel exterior at dusk" class="parallax-img">
+    </div>
+
+    <div class="hero-content">
+      <div class="hero-eyebrow" id="hero-eyebrow">Welcome to Velvet Crown Hotel</div>
+      <h1 class="hero-title" id="hero-title">
+        Where <em>Prestige</em><br>Meets Perfection
+      </h1>
+      <div class="hero-subtitle" id="hero-subtitle">AN ICON OF ULTRA-LUXURY HOSPITALITY</div>
+      <p class="hero-desc" id="hero-desc">
+        Nestled in the heart of grandeur, Velvet Crown offers a sanctuary of elegance — where every detail is curated for the most discerning of guests.
+      </p>
+      <div class="hero-actions" id="hero-actions">
+        <button class="btn-primary-gold" data-open-booking="">
+          <i class="fa-solid fa-crown"></i> Reserve Your Stay
+        </button>
+        <a href="#rooms-section" class="btn-secondary-outline">
+          <i class="fa-solid fa-bed"></i> Explore Rooms
+        </a>
+      </div>
+    </div>
+
+    <div class="hero-scroll-hint">
+      <span>Scroll</span>
+      <div class="scroll-line"></div>
+    </div>
+
+    <!-- Stats bar -->
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <div class="hero-stat-num" data-count-up="4.9" data-count-suffix="">4.9</div>
+        <div class="hero-stat-label">Guest Rating</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num" data-count-up="120" data-count-suffix="+">120+</div>
+        <div class="hero-stat-label">Luxury Rooms</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num" data-count-up="25" data-count-suffix="">25</div>
+        <div class="hero-stat-label">Years of Excellence</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num" data-count-up="5" data-count-suffix="★">5★</div>
+        <div class="hero-stat-label">Forbes Rating</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====================== ABOUT ====================== -->
+  <section class="section" id="about-section">
+    <div class="section-inner">
+      <div class="about-split">
+        <div class="reveal">
+          <div class="about-img-wrap glass-card" style="border-radius:var(--radius-lg)">
+            <img src="/assets/images/pexels-pixabay-258154.jpg" alt="Velvet Crown Hotel lobby" style="width:100%;height:420px;object-fit:cover;border-radius:var(--radius-lg)">
+          </div>
         </div>
-      
+        <div class="reveal" style="--reveal-delay:0.15s">
+          <div class="section-label">About Us</div>
+          <h2 class="section-title">A Haven of <em>Luxury</em> &amp; Prestige</h2>
+          <div class="gold-line"></div>
+          <p class="section-sub mb-3">
+            Welcome to Velvet Crown Hotel, where elegance meets unparalleled comfort. Our hotel blends sophisticated design, world-class hospitality, and premium amenities — tailored for the most discerning guests.
+          </p>
+          <p style="font-size:0.9rem;color:var(--muted);margin-bottom:1.5rem">
+            Indulge in lavish suites adorned with velvet textures, dine in Michelin-starred restaurants, and unwind in our serene spa retreat. Whether you're here for a romantic escape, a business retreat, or a grand celebration — Velvet Crown ensures a royal experience, every time.
+          </p>
+          <div style="display:flex;gap:2rem;flex-wrap:wrap;margin-bottom:1.8rem">
+            <div>
+              <div style="font-family:var(--font-serif);font-size:2.2rem;color:var(--gold-light);font-weight:300" data-count-up="120" data-count-suffix="+">120+</div>
+              <div style="font-size:0.78rem;color:var(--muted);font-family:var(--font-display);letter-spacing:0.15em">Luxury Suites</div>
+            </div>
+            <div>
+              <div style="font-family:var(--font-serif);font-size:2.2rem;color:var(--gold-light);font-weight:300" data-count-up="8" data-count-suffix="">8</div>
+              <div style="font-size:0.78rem;color:var(--muted);font-family:var(--font-display);letter-spacing:0.15em">Dining Venues</div>
+            </div>
+            <div>
+              <div style="font-family:var(--font-serif);font-size:2.2rem;color:var(--gold-light);font-weight:300" data-count-up="25" data-count-suffix="yr">25yr</div>
+              <div style="font-size:0.78rem;color:var(--muted);font-family:var(--font-display);letter-spacing:0.15em">Of Excellence</div>
+            </div>
+          </div>
+          <button class="btn-primary-gold" data-open-booking="">
+            <i class="fa-solid fa-crown"></i> Reserve Now
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
 
-        <div class="home-intro text-center">
-          <br>
-          <h2 class="gold-color-txt">Velvet Crown Hotel – A Haven of Luxury and Prestige</h2>
-          <p>
-          <b> Welcome to Velvet Crown Hotel, where elegance meets unparalleled comfort. Nestled in the heart of luxury, our hotel offers a blend of sophisticated design, world-class hospitality, and premium amenities tailored for the most discerning guests.</b> <br>
-            Indulge in lavish suites adorned with velvet textures, dine in Michelin-starred restaurants, and unwind in our serene spa retreat. Whether you're here for a romantic escape, a business retreat, or a grand celebration, Velvet Crown Hotel ensures a royal experience, every time.
+  <!-- ====================== ROOMS & SUITES ====================== -->
+  <section class="section" id="rooms-section" style="padding-bottom:0">
+    <div class="section-inner">
+      <div class="text-center mb-4 reveal">
+        <div class="section-label" style="margin:0 auto 1rem">Rooms &amp; Suites</div>
+        <h2 class="section-title">Your <em>Personal Sanctuary</em></h2>
+        <div class="gold-line center"></div>
+        <p class="section-sub" style="margin:0 auto">
+          Discover curated rooms and suites blending comfort, sophistication, and breathtaking views.
+        </p>
+      </div>
+
+      <!-- Scroll controls -->
+      <div style="display:flex;justify-content:flex-end;gap:0.5rem;margin-bottom:1rem" class="reveal">
+        <button class="btn-secondary-outline" style="padding:0.6rem 1rem" data-h-prev aria-label="Previous rooms">
+          <i class="fa-solid fa-chevron-left"></i>
+        </button>
+        <button class="btn-secondary-outline" style="padding:0.6rem 1rem" data-h-next aria-label="Next rooms">
+          <i class="fa-solid fa-chevron-right"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Horizontal scroll track -->
+    <div style="padding:0 var(--gutter)">
+      <div class="h-scroll-track" id="rooms-track">
+
+        <!-- Deluxe Room -->
+        <div class="room-card" id="deluxeRoomHome" data-tilt data-category="room">
+          <img class="room-card-img" src="/assets/images/rooms/The St_ Regis Shenzhen—Deluxe Room - scenic view.jpeg" alt="Deluxe Room">
+          <div class="room-card-body">
+            <span class="room-card-badge">Deluxe</span>
+            <h3 class="room-card-title">Deluxe Room</h3>
+            <p class="room-card-desc">A stylish sanctuary with plush bedding and sweeping city views.</p>
+            <ul class="room-amenities">
+              <li><i class="fa-solid fa-bed"></i> King-size bed</li>
+              <li><i class="fa-solid fa-city"></i> City skyline view</li>
+              <li><i class="fa-solid fa-shower"></i> Rainfall shower &amp; Smart TV</li>
+              <li><i class="fa-solid fa-ruler-combined"></i> 32 m² of space</li>
+            </ul>
+            <div class="room-footer">
+              <div class="room-price">
+                <span class="room-price-num">$240</span>
+                <span class="room-price-per">/night</span>
+              </div>
+              <button class="btn-primary-gold" style="padding:0.6rem 1.2rem;font-size:0.6rem" data-open-booking="deluxe">Book Now</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Ocean View Room -->
+        <div class="room-card" id="oceanViewRoomHome" data-tilt data-category="room">
+          <img class="room-card-img" src="/assets/images/rooms/ocean view room.jpeg" alt="Ocean View Room">
+          <div class="room-card-body">
+            <span class="room-card-badge">Premium</span>
+            <h3 class="room-card-title">Ocean View Room</h3>
+            <p class="room-card-desc">Panoramic ocean vistas with a private balcony and artisan furnishings.</p>
+            <ul class="room-amenities">
+              <li><i class="fa-solid fa-bed"></i> King-size bed</li>
+              <li><i class="fa-solid fa-water"></i> Ocean panorama balcony</li>
+              <li><i class="fa-solid fa-bath"></i> Soaking tub &amp; walk-in shower</li>
+              <li><i class="fa-solid fa-ruler-combined"></i> 40 m² of space</li>
+            </ul>
+            <div class="room-footer">
+              <div class="room-price">
+                <span class="room-price-num">$320</span>
+                <span class="room-price-per">/night</span>
+              </div>
+              <button class="btn-primary-gold" style="padding:0.6rem 1.2rem;font-size:0.6rem" data-open-booking="ocean_view">Book Now</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Family Room -->
+        <div class="room-card" id="familyRoomHome" data-tilt data-category="room">
+          <img class="room-card-img" src="/assets/images/rooms/family room.jpeg" alt="Family Room">
+          <div class="room-card-body">
+            <span class="room-card-badge">Family</span>
+            <h3 class="room-card-title">Family Room</h3>
+            <p class="room-card-desc">Generous space with twin zones for parents and children to unwind in comfort.</p>
+            <ul class="room-amenities">
+              <li><i class="fa-solid fa-bed"></i> 1 King + 2 Twin beds</li>
+              <li><i class="fa-solid fa-children"></i> Kids' play corner</li>
+              <li><i class="fa-solid fa-wifi"></i> High-speed WiFi</li>
+              <li><i class="fa-solid fa-ruler-combined"></i> 58 m² of space</li>
+            </ul>
+            <div class="room-footer">
+              <div class="room-price">
+                <span class="room-price-num">$380</span>
+                <span class="room-price-per">/night</span>
+              </div>
+              <button class="btn-primary-gold" style="padding:0.6rem 1.2rem;font-size:0.6rem" data-open-booking="family">Book Now</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Executive Suite -->
+        <div class="room-card" id="executiveSuiteHome" data-tilt data-category="suite">
+          <img class="room-card-img" src="/assets/images/rooms/Executive suite.jpeg" alt="Executive Suite">
+          <div class="room-card-body">
+            <span class="room-card-badge">Suite</span>
+            <h3 class="room-card-title">Executive Suite</h3>
+            <p class="room-card-desc">Spacious suite with separate living area and premium amenities for elite travelers.</p>
+            <ul class="room-amenities">
+              <li><i class="fa-solid fa-bed"></i> King bed &amp; lounge seating</li>
+              <li><i class="fa-solid fa-vest"></i> Walk-in closet &amp; vanity</li>
+              <li><i class="fa-solid fa-door-open"></i> Executive lounge access</li>
+              <li><i class="fa-solid fa-ruler-combined"></i> 55 m² of space</li>
+            </ul>
+            <div class="room-footer">
+              <div class="room-price">
+                <span class="room-price-num">$410</span>
+                <span class="room-price-per">/night</span>
+              </div>
+              <button class="btn-primary-gold" style="padding:0.6rem 1.2rem;font-size:0.6rem" data-open-booking="executive">Book Now</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Penthouse Suite -->
+        <div class="room-card" id="pentRoomHome" data-tilt data-category="suite">
+          <img class="room-card-img" src="/assets/images/rooms/Elegant Nighttime Retreat Luxury Penthouse Bedroom_ AI royalty free stock photography.jpeg" alt="Penthouse Suite">
+          <div class="room-card-body">
+            <span class="room-card-badge">Penthouse</span>
+            <h3 class="room-card-title">Penthouse Suite</h3>
+            <p class="room-card-desc">Top-floor opulence with private terrace, butler service, and panoramic vistas.</p>
+            <ul class="room-amenities">
+              <li><i class="fa-solid fa-star"></i> Private rooftop terrace</li>
+              <li><i class="fa-solid fa-concierge-bell"></i> 24/7 butler service</li>
+              <li><i class="fa-solid fa-bath"></i> Jacuzzi &amp; steam room</li>
+              <li><i class="fa-solid fa-ruler-combined"></i> 110 m² of space</li>
+            </ul>
+            <div class="room-footer">
+              <div class="room-price">
+                <span class="room-price-num">$560</span>
+                <span class="room-price-per">/night</span>
+              </div>
+              <button class="btn-primary-gold" style="padding:0.6rem 1.2rem;font-size:0.6rem" data-open-booking="penthouse">Book Now</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Presidential Suite -->
+        <div class="room-card" id="presidentialSuiteHome" data-tilt data-category="suite">
+          <img class="room-card-img" src="/assets/images/rooms/Presidential Suite _ Alexandria, Egypt Suites _ Four Seasons Hotel.jpeg" alt="Presidential Suite">
+          <div class="room-card-body">
+            <span class="room-card-badge">Presidential</span>
+            <h3 class="room-card-title">Presidential Suite</h3>
+            <p class="room-card-desc">The pinnacle of luxury. An entire floor of curated perfection for dignitaries.</p>
+            <ul class="room-amenities">
+              <li><i class="fa-solid fa-crown"></i> Full floor, 3 bedrooms</li>
+              <li><i class="fa-solid fa-utensils"></i> Private dining &amp; chef</li>
+              <li><i class="fa-solid fa-car"></i> Limousine transfers</li>
+              <li><i class="fa-solid fa-ruler-combined"></i> 280 m² of space</li>
+            </ul>
+            <div class="room-footer">
+              <div class="room-price">
+                <span class="room-price-num">$890</span>
+                <span class="room-price-per">/night</span>
+              </div>
+              <button class="btn-primary-gold" style="padding:0.6rem 1.2rem;font-size:0.6rem" data-open-booking="presidential">Book Now</button>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- end h-scroll-track -->
+    </div>
+
+    <div class="section-inner" style="padding-top:2rem;padding-bottom:3rem;text-align:center">
+      <a href="/pages/rooms-page.html" class="btn-secondary-outline">
+        View All Rooms &amp; Suites <i class="fa-solid fa-arrow-right"></i>
+      </a>
+    </div>
+  </section>
+
+  <!-- ====================== OFFERS ====================== -->
+  <section class="section" id="offers-section">
+    <div class="section-inner">
+      <div class="text-center mb-4 reveal">
+        <div class="section-label" style="margin:0 auto 1rem">Exclusive Offers</div>
+        <h2 class="section-title">Curated <em>Packages</em></h2>
+        <div class="gold-line center"></div>
+        <p class="section-sub" style="margin:0 auto">Indulgent experiences designed to elevate every moment of your stay.</p>
+      </div>
+
+      <div class="grid-3 stagger-group">
+
+        <!-- Romance -->
+        <div class="offer-card stagger-item" id="romanticOfferHome" data-tilt>
+          <div class="offer-card-img-wrap">
+            <img src="/assets/images/events/couple date venue2.webp" alt="Romantic Escape">
+            <div class="offer-card-img-overlay"></div>
+          </div>
+          <div class="offer-card-body">
+            <div class="offer-card-tag">Romance</div>
+            <h3 class="offer-card-title">Romantic Escape</h3>
+            <p class="offer-card-desc">Champagne on arrival, rose petal turndown, and a candlelit four-course dinner.</p>
+            <div class="offer-price-badge">From $299 / night</div>
+            <br>
+            <a href="/pages/offers-page.html#diningOffer" class="btn-secondary-outline" style="font-size:0.62rem;padding:0.6rem 1.4rem">
+              Discover Offer
+            </a>
+          </div>
+        </div>
+
+        <!-- Wellness -->
+        <div class="offer-card stagger-item" id="wellnessOfferHome" data-tilt>
+          <div class="offer-card-img-wrap">
+            <img src="/assets/images/gallery/spadownload.jpeg" alt="Luxury Spa Retreat">
+            <div class="offer-card-img-overlay"></div>
+          </div>
+          <div class="offer-card-body">
+            <div class="offer-card-tag">Wellness</div>
+            <h3 class="offer-card-title">Luxury Spa Retreat</h3>
+            <p class="offer-card-desc">A 60-minute signature treatment, access to thermal pools, and a wellness breakfast.</p>
+            <div class="offer-price-badge">From $150 / night</div>
+            <br>
+            <a href="/pages/offers-page.html#wellnessOffer" class="btn-secondary-outline" style="font-size:0.62rem;padding:0.6rem 1.4rem">
+              Discover Offer
+            </a>
+          </div>
+        </div>
+
+        <!-- Direct Booking -->
+        <div class="offer-card stagger-item" id="stayOfferHome" data-tilt>
+          <div class="offer-card-img-wrap">
+            <img src="/assets/images/752f5b82-caf0-4f64-9f24-53fc6e486308.jpeg" alt="Exclusive Direct Booking">
+            <div class="offer-card-img-overlay"></div>
+          </div>
+          <div class="offer-card-body">
+            <div class="offer-card-tag">Stay</div>
+            <h3 class="offer-card-title">Direct Booking Savings</h3>
+            <p class="offer-card-desc">Book directly and unlock 20% savings plus a complimentary room upgrade.</p>
+            <div class="offer-price-badge">Save up to 20%</div>
+            <br>
+            <a href="/pages/offers-page.html#stayOffer" class="btn-secondary-outline" style="font-size:0.62rem;padding:0.6rem 1.4rem">
+              Discover Offer
+            </a>
+          </div>
+        </div>
+
+      </div><!-- end grid-3 -->
+
+      <div class="text-center mt-4 reveal">
+        <a href="/pages/offers-page.html" class="btn-secondary-outline">
+          View All Offers <i class="fa-solid fa-arrow-right"></i>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====================== EXPERIENCES ====================== -->
+  <section class="section" id="experiences-section" style="background:var(--velvet);background:linear-gradient(135deg,var(--surface) 0%,var(--velvet) 100%)">
+    <div class="section-inner">
+      <div class="text-center mb-4 reveal">
+        <div class="section-label" style="margin:0 auto 1rem">Experiences</div>
+        <h2 class="section-title">Beyond the <em>Ordinary</em></h2>
+        <div class="gold-line center"></div>
+        <p class="section-sub" style="margin:0 auto">Curated moments that transform your stay into an unforgettable chapter.</p>
+      </div>
+
+      <div class="grid-2 stagger-group">
+
+        <div class="experience-card stagger-item" id="kidsExperienceCard" data-tilt>
+          <div class="experience-card-bg">
+            <img src="/assets/images/gallery/The Best Outdoor Activities on Long Island - Mapping Megan.jpeg" alt="Kids Club">
+          </div>
+          <div class="experience-card-overlay"></div>
+          <div class="experience-card-content">
+            <div class="experience-card-icon"><i class="fa-solid fa-child"></i></div>
+            <h3 class="experience-card-title">Crown Kids Club</h3>
+            <p class="experience-card-desc">A magical world of supervised play, arts, and adventure for little explorers.</p>
+            <a href="/pages/experiences-page.html" class="btn-secondary-outline" style="font-size:0.62rem;padding:0.5rem 1.2rem">Explore</a>
+          </div>
+        </div>
+
+        <div class="experience-card stagger-item" id="barExperienceCard" data-tilt>
+          <div class="experience-card-bg">
+            <img src="/assets/images/gallery/Al Coro reframes classic Italian dining through a moody Manhattan lens - The Spaces.jpeg" alt="Underground Bar">
+          </div>
+          <div class="experience-card-overlay"></div>
+          <div class="experience-card-content">
+            <div class="experience-card-icon"><i class="fa-solid fa-martini-glass"></i></div>
+            <h3 class="experience-card-title">The Gilded Underground</h3>
+            <p class="experience-card-desc">A speakeasy-style bar below the lobby. Craft cocktails and velvet ambience.</p>
+            <a href="/pages/experiences-page.html#barCard" class="btn-secondary-outline" style="font-size:0.62rem;padding:0.5rem 1.2rem">Explore</a>
+          </div>
+        </div>
+
+        <div class="experience-card stagger-item" id="spaExperienceCard" data-tilt>
+          <div class="experience-card-bg">
+            <img src="/assets/images/gallery/Luxury Massage Room Serenity.jpeg" alt="Velvet Spa">
+          </div>
+          <div class="experience-card-overlay"></div>
+          <div class="experience-card-content">
+            <div class="experience-card-icon"><i class="fa-solid fa-spa"></i></div>
+            <h3 class="experience-card-title">Velvet Spa &amp; Wellness</h3>
+            <p class="experience-card-desc">Signature treatments, thermal pools, and holistic wellness rituals.</p>
+            <a href="/pages/experiences-page.html#spaCard" class="btn-secondary-outline" style="font-size:0.62rem;padding:0.5rem 1.2rem">Explore</a>
+          </div>
+        </div>
+
+        <div class="experience-card stagger-item" id="poolsideEleganceExperienceCard" data-tilt>
+          <div class="experience-card-bg">
+            <img src="/assets/images/gallery/Infinity pool meets infinite horizon in Capri, Italy, painting the sky in liquid gold.jpeg" alt="Infinity Pool">
+          </div>
+          <div class="experience-card-overlay"></div>
+          <div class="experience-card-content">
+            <div class="experience-card-icon"><i class="fa-solid fa-water-ladder"></i></div>
+            <h3 class="experience-card-title">Starlit Serenity Pool</h3>
+            <p class="experience-card-desc">Infinity-edge pool with panoramic horizons. Daybeds. Handcrafted cocktails.</p>
+            <a href="/pages/experiences-page.html#poolCard" class="btn-secondary-outline" style="font-size:0.62rem;padding:0.5rem 1.2rem">Explore</a>
+          </div>
+        </div>
+
+      </div><!-- end grid-2 -->
+
+      <div class="text-center mt-4 reveal">
+        <a href="/pages/experiences-page.html" class="btn-primary-gold">
+          <i class="fa-solid fa-compass"></i> All Experiences
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====================== EVENTS PREVIEW ====================== -->
+  <section class="section" id="events-section">
+    <div class="section-inner">
+      <div class="text-center mb-4 reveal">
+        <div class="section-label" style="margin:0 auto 1rem">Events &amp; Celebrations</div>
+        <h2 class="section-title"><em>Remarkable</em> Moments, Flawlessly Executed</h2>
+        <div class="gold-line center"></div>
+      </div>
+
+      <div class="grid-3 stagger-group" id="meetingsEventsHome">
+
+        <div class="events-card stagger-item" data-tilt>
+          <img class="events-card-img" src="/assets/images/events/wedding venue2.jpeg" alt="Wedding venue">
+          <div class="events-card-body">
+            <span class="events-badge">Weddings</span>
+            <h3 class="events-card-title">Weddings &amp; Celebrations</h3>
+            <p class="events-card-desc">Exchange vows beneath crystal chandeliers. Intimate or grand — every detail perfected.</p>
+            <div class="events-capacity">
+              <span><i class="fa-solid fa-users"></i> Up to 400 guests</span>
+              <span><i class="fa-solid fa-location-dot"></i> 3 Venues</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="events-card stagger-item" id="weddingsCelebrationsHome" data-tilt>
+          <img class="events-card-img" src="/assets/images/events/Meetings & Corporate Events.jpeg" alt="Corporate meetings">
+          <div class="events-card-body">
+            <span class="events-badge">Corporate</span>
+            <h3 class="events-card-title">Meetings &amp; Conferences</h3>
+            <p class="events-card-desc">State-of-the-art AV, breakout rooms, and private dining for elite gatherings.</p>
+            <div class="events-capacity">
+              <span><i class="fa-solid fa-users"></i> Up to 200 guests</span>
+              <span><i class="fa-solid fa-location-dot"></i> 5 Suites</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="events-card stagger-item" data-tilt>
+          <img class="events-card-img" src="/assets/images/events/social gathering.jpg" alt="Social gatherings">
+          <div class="events-card-body">
+            <span class="events-badge">Social</span>
+            <h3 class="events-card-title">Social Gatherings</h3>
+            <p class="events-card-desc">Galas, receptions, and milestone celebrations crafted for lasting memories.</p>
+            <div class="events-capacity">
+              <span><i class="fa-solid fa-users"></i> Up to 250 guests</span>
+              <span><i class="fa-solid fa-location-dot"></i> 4 Spaces</span>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- end grid-3 -->
+
+      <div class="text-center mt-4 reveal">
+        <a href="/pages/events-page.html" class="btn-secondary-outline">
+          Plan Your Event <i class="fa-solid fa-arrow-right"></i>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====================== RATINGS ====================== -->
+  <section class="section" id="ratings-section" style="background:linear-gradient(135deg,var(--velvet) 0%,var(--surface) 100%)">
+    <div class="section-inner">
+      <div class="about-split" style="gap:3rem">
+        <div class="reveal">
+          <div class="section-label">Guest Reviews</div>
+          <h2 class="section-title">Loved by <em>Royalty</em> &amp; the World</h2>
+          <div class="gold-line"></div>
+          <div style="margin:1.5rem 0">
+            <div class="rating-bar-wrap">
+              <span class="rating-bar-label">TripAdvisor</span>
+              <div class="rating-bar-track"><div class="rating-bar-fill" data-width="90"></div></div>
+              <span style="font-size:0.82rem;color:var(--gold-light);min-width:38px">4.5/5</span>
+            </div>
+            <div class="rating-bar-wrap">
+              <span class="rating-bar-label">Booking.com</span>
+              <div class="rating-bar-track"><div class="rating-bar-fill" data-width="84"></div></div>
+              <span style="font-size:0.82rem;color:var(--gold-light);min-width:38px">8.4/10</span>
+            </div>
+            <div class="rating-bar-wrap">
+              <span class="rating-bar-label">Hotels.com</span>
+              <div class="rating-bar-track"><div class="rating-bar-fill" data-width="95"></div></div>
+              <span style="font-size:0.82rem;color:var(--gold-light);min-width:38px">9.5/10</span>
+            </div>
+            <div class="rating-bar-wrap">
+              <span class="rating-bar-label">Google</span>
+              <div class="rating-bar-track"><div class="rating-bar-fill" data-width="96"></div></div>
+              <span style="font-size:0.82rem;color:var(--gold-light);min-width:38px">4.8/5</span>
+            </div>
+          </div>
+          <p style="font-size:0.85rem;color:var(--muted);font-style:italic;border-left:2px solid var(--gold);padding-left:1rem">
+            "An experience beyond all expectations — every moment felt like royalty."<br>
+            <span style="color:var(--gold);font-size:0.78rem">— Victoria H., London</span>
           </p>
         </div>
 
-        <img src="/assets/images/fernando-alvarez-rodriguez-M7GddPqJowg-unsplash (1).jpg" class="img-fluid w-100 welcome-image" alt="welcome image">
-
-        <br>
-        <h3 class="text-center">Experience timeless luxury at Velvet Crown Hotel - Where Every Stay is a Regal Affair</h3>
-
-
-        <div class="rating-alert alert alert-dark rating-alert shadow p-3 mb-5 bg-body-tertiary rounded" role="alert">
-            <span id="rating-txt">4.8</span><span id="rate-out-of">/5</span><br>Excellent <a href="#" class="review-link">Read Reviews</a>
-            <div class="dropdown-center rating-drop-down">
-              <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Review Summery
-              </button>
-              <ul class="dropdown-menu rating-summery-dropdown">
-                <li><span>TripAdvisor  4.5/5</span></li>
-                <li><span>Booking.com  8.4/10</span></li>
-                <li><span>Hotels.com  9.5/10</span></li>
-              </ul>
+        <div class="reveal" style="--reveal-delay:0.2s;text-align:center">
+          <div class="rating-num-big" data-count-up="4.9" data-count-suffix="">4.9</div>
+          <div style="font-family:var(--font-display);font-size:0.7rem;letter-spacing:0.24em;color:var(--gold);text-transform:uppercase;margin:0.5rem 0 0.25rem">Overall Rating</div>
+          <div style="color:var(--gold-light);font-size:1.2rem;margin-bottom:1rem">★★★★★</div>
+          <div style="font-size:0.85rem;color:var(--muted)">Based on 3,200+ verified guest reviews</div>
+          <div class="gold-line center mt-3 mb-3"></div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;text-align:center">
+            <div class="glass-card" style="padding:1rem;border-radius:var(--radius-md)">
+              <div style="font-family:var(--font-serif);font-size:1.8rem;color:var(--gold-light)" data-count-up="98" data-count-suffix="%">98%</div>
+              <div style="font-size:0.72rem;color:var(--muted);font-family:var(--font-display);letter-spacing:0.12em">Recommend</div>
             </div>
-        </div>
-    
-
-    </section>
-
-    <br>
-    <br>
-
-    <section id="offers-section" class="main-page-section text-center px-md-5">
-      <h2>Offers</h2>
-        <div class="offers-container d-flex justify-content-center">
-
-          <div class="card text-center w-100 w-md-50 rounded-5 shadow overflow-hidden">
-            <img src="/assets/images/events/couple date venue2.webp" class="card-img-top" alt="Dining offer image">
-            <div class="card-body text-center d-flex flex-column justify-content-between">
-              <h5 class="card-title fw-bold mb-2">Romance</h5>
-              <p class="card-text small text-muted"><b>Romantic Escape</b></p>
-              <p class="card-text small text-muted">Surprise your loved one with a stay that includes champagne, rose petals, and a candlelit dinner.</p>
-              <div class="d-flex justify-content-center align-items-center gap-3 mb-2 text-muted small">
-                <span><i class="fas fa-heart me-1 gold-color-txt"></i>Romantic Getaway</span>
-              </div>
-              <p class="text-muted small mb-2 gold-color-txt"><strong>From $299/night</strong></p>
-              <div class="d-flex justify-content-center">
-                <a href="/pages/offers-page.html#diningOffer" class="btn btn-outline w-50 shadow btn-gold-click-effect">Read More</a>
-              </div>
-            </div>
-          </div>
-          
-          <div class="card text-center w-100 w-md-50 rounded-5 shadow overflow-hidden">
-            <img src="/assets/images/gallery/spadownload.jpeg" class="card-img-top" alt="Wellness offer image">
-            <div class="card-body text-center d-flex flex-column justify-content-between">
-              <h5 class="card-title fw-bold mb-2">Wellness</h5>
-              <p class="card-text small text-muted"><b>Luxury Spa Retreat</b></p>
-              <p class="card-text small text-muted">Escape to tranquility with a 60-minute signature spa treatment included in your stay. Unwind and refresh in ultimate comfort.</p>
-              <div class="d-flex justify-content-center align-items-center gap-3 mb-2 text-muted small">
-                <span><i class="fas fa-spa me-1 gold-color-txt"></i>Signature Treatment</span>
-              </div>
-              <p class="text-muted small mb-2 gold-color-txt"><strong>From $150/night</strong></p>
-              <div class="d-flex justify-content-center">
-                <a href="/pages/offers-page.html#wellnessOffer" class="btn btn-outline w-50 shadow btn-gold-click-effect">Read More</a>
-              </div>
-            </div>
-          </div>
-          
-          <div class="card text-center w-100 w-md-50 rounded-5 shadow overflow-hidden">
-            <img src="/assets/images/752f5b82-caf0-4f64-9f24-53fc6e486308.jpeg" class="card-img-top" alt="Booking offer image">
-            <div class="card-body text-center d-flex flex-column justify-content-between">
-              <h5 class="card-title fw-bold mb-2">Stay</h5>
-              <p class="card-text small text-muted"><b>Exclusive Direct Booking Offer</b></p>
-              <p class="card-text small text-muted">Book directly with us and enjoy special savings on your stay, plus a complimentary room upgrade (subject to availability).</p>
-              <div class="d-flex justify-content-center align-items-center gap-3 mb-2 text-muted small">
-                <span><i class="fas fa-calendar-check me-1 gold-color-txt"></i>Direct Booking</span>
-              </div>
-              <p class="text-muted small mb-2 gold-color-txt"><strong>Save up to 20%</strong></p>
-              <div class="d-flex justify-content-center">
-                <a href="/pages/offers-page.html#stayOffer" class="btn btn-outline w-50 shadow btn-gold-click-effect">Read More</a>
-              </div>
-            </div>
-          </div>
-          
-
-            <!-- <div class="card text-center w-100 w-md-50 rounded-4 shadow">
-                <img src="/assets/images/events/couple date venue2.webp" class="card-img-top" alt="Dining offer image">
-                <div class="card-body">
-                  <h5 class="card-title">Romance</h5>
-                  <p class="card-text"><b>Romantic Escape</b></p>
-                  <p class="card-text">Surprise your loved one with a stay that includes champagne, rose petals, and a candlelit dinner.</p>
-                </div>
-                <div class="card-body">
-                  <a href="/pages/offers-page.html#diningOffer" class="card-link"><button type="button" class="btn btn-outline-warning shadow">Read More</button></a>
-                </div>
-              </div>
-              <div class="card text-center w-100 w-md-50 rounded-4 shadow">
-                <img src="/assets/images/gallery/spadownload.jpeg" class="card-img-top" alt="wellness offer image">
-                <div class="card-body">
-                  <h5 class="card-title">Wellness</h5>
-                  <p class="card-text"><b>Luxury Spa Retreat</b></p>
-                  <p class="card-text">Escape to tranquility with a 60-minute signature spa treatment included in your stay. Unwind and refresh in ultimate comfort.</p>
-                </div>
-                <div class="card-body">
-                  <a href="/pages/offers-page.html#wellnessOffer" class="card-link"><button type="button" class="btn btn-outline-warning shadow">Read More</button></a>
-                </div>
-              </div>
-              <div class="card text-center w-100 w-md-50 rounded-4 shadow">
-                <img src="/assets/images/752f5b82-caf0-4f64-9f24-53fc6e486308.jpeg" class="card-img-top" alt="Booking Offer image">
-                <div class="card-body">
-                  <h5 class="card-title">Stay</h5>
-                  <p class="card-text"><b>Exclusive Direct Booking Offer</b></p>
-                  <p class="card-text">Book directly with us and enjoy special savings on your stay, plus a complimentary room upgrade (subject to availability).</p>
-                </div>
-                <div class="card-body">
-                  <a href="/pages/offers-page.html#stayOffer" class="card-link"><button type="button" class="btn btn-outline-warning shadow">Read More</button></a>
-                </div>
-              </div> -->
-
-        </div>
-
-        <br>
-        <br>
-        <a href="/pages/offers-page.html" class="card-link p-3 rounded bg-white shadow"><button type="button" class="btn btn-outline w-50 shadow btn-gold-click-effect">View All</button></a>
-  
-        
-    </section>
-
-    <br>
-    <br>
-
-    <section id="about-section" class="main-page-section">
-      <h2>About</h2>
-
-      <div class="row">
-        <div class="col-12 col-md-6 d-flex flex-column justify-content-center align-items-center">
-          <div class="about-text">
-            <div class="card w-100 w-md-50 shadow">
-              <div class="card-body">
-                <h5 class="card-title">About</h5>
-                <p class="card-text">
-                  An opulent retreat nestled in the heart of the city, Velvet Crown redefines luxury with its timeless elegance and modern allure.
-                  Overlooking breathtaking cityscapes and tranquil waters, our hotel offers an unparalleled sanctuary for discerning travelers.
-                </p>
-                <ul class="about-points">
-                  <li>350 lavish rooms, suites, and residences with panoramic views</li>
-                  <li>6 exceptional dining venues, including a rooftop bar with skyline views</li>
-                  <li>Exclusive access to a premier shopping and entertainment hub</li>
-                </ul>
-    
-                <a class="card-link" data-bs-toggle="collapse" href="#aboutMoreText" role="button" aria-expanded="false" aria-controls="aboutMoreText">
-                  <button type="button" class="btn btn-outline w-50 shadow btn-gold-click-effect">Read More</button>
-                </a>
-    
-                <div class="collapse mt-3" id="aboutMoreText">
-                  <p class="card-text">
-                    Established in 1985, Velvet Crown has been a beacon of luxury and tradition for over three decades. Our iconic architecture blends
-                    European sophistication with contemporary design, creating a unique and welcoming atmosphere.
-                  </p>
-                  <p class="card-text">
-                    Guests have included world leaders, celebrities, and cultural icons—all drawn by the unmatched service, exclusive experiences,
-                    and curated events that define our legacy. From wellness retreats to bespoke city tours, Velvet Crown continues to set the gold
-                    standard in urban hospitality.
-                  </p>
-                  <p class="card-text">
-                    Join us in celebrating timeless hospitality, where every stay becomes a cherished memory.
-                  </p>
-                </div>
-              </div>
+            <div class="glass-card" style="padding:1rem;border-radius:var(--radius-md)">
+              <div style="font-family:var(--font-serif);font-size:1.8rem;color:var(--gold-light)" data-count-up="3200" data-count-suffix="+">3200+</div>
+              <div style="font-size:0.72rem;color:var(--muted);font-family:var(--font-display);letter-spacing:0.12em">Reviews</div>
             </div>
           </div>
         </div>
-    
-        <div class="col-12 col-md-6">
-          <img src="/assets/images/pexels-pixabay-258154.jpg" class="img-fluid shadow" alt="Velvet Crown Hotel About image">
+      </div>
+    </div>
+  </section>
+
+  <!-- ====================== GALLERY PREVIEW ====================== -->
+  <section class="section" id="gallery-preview-section">
+    <div class="section-inner">
+      <div class="text-center mb-4 reveal">
+        <div class="section-label" style="margin:0 auto 1rem">Gallery</div>
+        <h2 class="section-title">Glimpses of <em>Grandeur</em></h2>
+        <div class="gold-line center"></div>
+      </div>
+
+      <div class="gallery-grid">
+        <div class="gallery-item reveal">
+          <img src="/assets/images/gallery/AN INVITING HOTEL LOBBY DESIGN !.jpeg" alt="Hotel Lobby">
+          <div class="gallery-item-overlay"><i class="fa-solid fa-expand"></i></div>
+        </div>
+        <div class="gallery-item reveal" style="--reveal-delay:0.1s">
+          <img src="/assets/images/gallery/Infinity pool meets infinite horizon in Capri, Italy, painting the sky in liquid gold.jpeg" alt="Infinity Pool">
+          <div class="gallery-item-overlay"><i class="fa-solid fa-expand"></i></div>
+        </div>
+        <div class="gallery-item reveal" style="--reveal-delay:0.2s">
+          <img src="/assets/images/gallery/Elegant Fine Dining_.jpeg" alt="Dining">
+          <div class="gallery-item-overlay"><i class="fa-solid fa-expand"></i></div>
+        </div>
+        <div class="gallery-item reveal" style="--reveal-delay:0.05s">
+          <img src="/assets/images/gallery/hotel-spa.webp" alt="Spa">
+          <div class="gallery-item-overlay"><i class="fa-solid fa-expand"></i></div>
+        </div>
+        <div class="gallery-item reveal" style="--reveal-delay:0.15s">
+          <img src="/assets/images/gallery/Island Villas with Stunning Ocean Views.jpeg" alt="Ocean Villa">
+          <div class="gallery-item-overlay"><i class="fa-solid fa-expand"></i></div>
+        </div>
+        <div class="gallery-item reveal" style="--reveal-delay:0.25s">
+          <img src="/assets/images/gallery/Luxury hotel lobby lounge.jpeg" alt="Lounge">
+          <div class="gallery-item-overlay"><i class="fa-solid fa-expand"></i></div>
         </div>
       </div>
 
-    </section>
-
-    <br>
-    <br>
-
-    <section id="rooms-section" class="main-page-section  position-relative text-center">
-      <h2>Rooms</h2>
-      <div class="scroll-container d-flex overflow-auto px-5 gap-4 justify-content-start">
-
-        <!-- DELUXE ROOM -->
-        <div id="deluxeRoomHome" class="room-card card flex-shrink-0 shadow rounded-5 overflow-hidden">
-          <img src="/assets/images/rooms/The St_ Regis Shenzhen—Deluxe Room - scenic view.jpeg" class="card-img-top" alt="Deluxe Room">
-          <div class="card-body text-center d-flex flex-column justify-content-between">
-            <h5 class="card-title fw-bold mb-2">Deluxe Room</h5>
-            <p class="card-text small text-muted">Modern décor, plush bedding, and skyline views.</p>
-            <div class="d-flex justify-content-center align-items-center gap-3 mb-2 text-muted small">
-              <span><i class="fas fa-bed me-1 gold-color-txt"></i>King Bed</span>
-              <span><i class="fas fa-ruler-combined me-1 gold-color-txt"></i>32 m²</span>
-            </div>
-            <p class="text-muted small mb-2 gold-color-txt"><strong>From $240/night</strong></p>
-            <div class="d-flex justify-content-center">
-              <a href="/pages/rooms-page.html#deluxeRoomCard" class="btn btn-outline w-50 shadow btn-gold-click-effect">View More</a>
-            </div>
-          </div>
-        </div>
-
-        <!-- EXECUTIVE SUITE -->
-        <div id="executiveSuiteHome" class="room-card card flex-shrink-0 shadow rounded-5 overflow-hidden">
-          <img src="/assets/images/rooms/Executive suite.jpeg" class="card-img-top" alt="Executive Suite">
-          <div class="card-body text-center d-flex flex-column justify-content-between">
-            <h5 class="card-title fw-bold mb-2">Executive Suite</h5>
-            <p class="card-text small text-muted">Spacious layout with lounge and premium touches.</p>
-            <div class="d-flex justify-content-center align-items-center gap-3 mb-2 text-muted small">
-              <span><i class="fas fa-couch me-1 gold-color-txt"></i>Living Area</span>
-              <span><i class="fas fa-ruler-combined me-1 gold-color-txt"></i>55 m²</span>
-            </div>
-            <p class="text-muted small mb-2 gold-color-txt"><strong>From $410/night</strong></p>
-            <div class="d-flex justify-content-center">
-              <a href="/pages/rooms-page.html#executiveSuiteCard" class="btn btn-outline w-50 shadow btn-gold-click-effect">View More</a>
-            </div>
-          </div>
-        </div>
-
-        <!-- PRESIDENTIAL SUITE -->
-        <div id="presidentialSuiteHome" class="room-card card flex-shrink-0 shadow rounded-5 overflow-hidden">
-          <img src="/assets/images/rooms/Presidential Suite _ Alexandria, Egypt Suites _ Four Seasons Hotel.jpeg" class="card-img-top" alt="Presidential Suite">
-          <div class="card-body text-center d-flex flex-column justify-content-between">
-            <h5 class="card-title fw-bold mb-2">Presidential Suite</h5>
-            <p class="card-text small text-muted">Exclusive luxury with a terrace and personal butler.</p>
-            <div class="d-flex justify-content-center align-items-center gap-3 mb-2 text-muted small">
-              <span><i class="fas fa-hot-tub me-1 gold-color-txt"></i>Jacuzzi</span>
-              <span><i class="fas fa-ruler-combined me-1 gold-color-txt"></i>120 m²</span>
-            </div>
-            <p class="text-muted small mb-2 gold-color-txt"><strong>From $1,200/night</strong></p>
-            <div class="d-flex justify-content-center">
-              <a href="/pages/rooms-page.html#presidentialSuiteCard" class="btn btn-outline w-50 shadow btn-gold-click-effect">View More</a>
-            </div>
-          </div>
-        </div>
-
-        <!-- OCEAN VIEW ROOM -->
-        <div id="oceanViewRoomHome" class="room-card card flex-shrink-0 shadow rounded-5 overflow-hidden">
-          <img src="/assets/images/rooms/ocean view room.jpeg" class="card-img-top" alt="Ocean View Room">
-          <div class="card-body text-center d-flex flex-column justify-content-between">
-            <h5 class="card-title fw-bold mb-2">Ocean View Room</h5>
-            <p class="card-text small text-muted">Panoramic sea views and breezy coastal comfort.</p>
-            <div class="d-flex justify-content-center align-items-center gap-3 mb-2 text-muted small">
-              <span><i class="fas fa-water me-1 gold-color-txt"></i>Sea View</span>
-              <span><i class="fas fa-ruler-combined me-1 gold-color-txt"></i>28 m²</span>
-            </div>
-            <p class="text-muted small mb-2 gold-color-txt"><strong>From $270/night</strong></p>
-            <div class="d-flex justify-content-center">
-              <a href="/pages/rooms-page.html#oceanViewRoomCard" class="btn btn-outline w-50 shadow btn-gold-click-effect">View More</a>
-            </div>
-          </div>
-        </div>
-
-        <!-- FAMILY ROOM -->
-        <div id="familyRoomHome" class="room-card card flex-shrink-0 shadow rounded-5 overflow-hidden">
-          <img src="/assets/images/rooms/family room.jpeg" class="card-img-top" alt="Family Room">
-          <div class="card-body text-center d-flex flex-column justify-content-between">
-            <h5 class="card-title fw-bold mb-2">Family Room</h5>
-            <p class="card-text small text-muted">Comfortable and spacious with kid-friendly features.</p>
-            <div class="d-flex justify-content-center align-items-center gap-3 mb-2 text-muted small">
-              <span><i class="fas fa-users me-1 gold-color-txt"></i>4 Guests</span>
-              <span><i class="fas fa-ruler-combined me-1 gold-color-txt"></i>45 m²</span>
-            </div>
-            <p class="text-muted small mb-2 gold-color-txt"><strong>From $310/night</strong></p>
-            <div class="d-flex justify-content-center">
-              <a href="/pages/rooms-page.html#familyRoomCard" class="btn btn-outline w-50 shadow btn-gold-click-effect">View More</a>
-            </div>
-          </div>
-        </div>
-
-
-        <!-- <div id="deluxeRoomHome" class="room-card card flex-shrink-0 rounded-5">
-          <img src="/assets/images/rooms/The St_ Regis Shenzhen—Deluxe Room - scenic view.jpeg" class="card-img-top" alt="Deluxe Room">
-          <div class="card-body d-flex flex-column justify-content-center align-items-center text-center">
-            <h5 class="card-title">Deluxe Room</h5>
-            <p class="card-text">A stylish sanctuary with plush bedding, modern décor, and sweeping city views. Perfect for a relaxing stay.</p>
-            <a href="/pages/rooms-page.html#deluxeRoomCard" class="btn btn-outline-warning w-50 shadow">View More</a>
-          </div>
-        </div>
-
-        <div id="executiveSuiteHome" class="room-card card flex-shrink-0 rounded-5">
-          <img src="/assets/images/rooms/Executive suite.jpeg" class="card-img-top" alt="Executive Suite">
-          <div class="card-body d-flex flex-column justify-content-center align-items-center text-center">
-            <h5 class="card-title">Executive Suite</h5>
-            <p class="card-text">Spacious suite with a separate living area, premium amenities, and exclusive lounge access.</p>
-            <a href="/pages/rooms-page.html#executiveSuiteCard" class="btn btn-outline-warning w-50 shadow">View More</a>
-          </div>
-        </div>
-
-        <div id="presidentialSuiteHome" class="room-card card flex-shrink-0 rounded-5">
-          <img src="/assets/images/rooms/Presidential Suite _ Alexandria, Egypt Suites _ Four Seasons Hotel.jpeg" class="card-img-top" alt="Presidential Suite">
-          <div class="card-body d-flex flex-column justify-content-center align-items-center text-center">
-            <h5 class="card-title">Presidential Suite</h5>
-            <p class="card-text">The pinnacle of luxury featuring expansive space, private balcony, and a personal butler service.</p>
-            <a href="/pages/rooms-page.html#presidentialSuiteCard" class="btn btn-outline-warning w-50 shadow">View More</a>
-          </div>
-        </div>
-
-        <div id="oceanViewRoomHome" class="room-card card flex-shrink-0 rounded-5">
-          <img src="/assets/images/rooms/ocean view room.jpeg" class="card-img-top" alt="Ocean View Room">
-          <div class="card-body d-flex flex-column justify-content-center align-items-center text-center">
-            <h5 class="card-title">Ocean View Room</h5>
-            <p class="card-text">Wake up to breathtaking sea views in a cozy and contemporary space designed for serenity.</p>
-            <a href="/pages/rooms-page.html#oceanViewRoomCard" class="btn btn-outline-warning w-50 shadow">View More</a>
-          </div>
-        </div>
-
-        <div id="familyRoomHome" class="room-card card flex-shrink-0 rounded-5">
-          <img src="/assets/images/rooms/family room.jpeg" class="card-img-top" alt="Family Room">
-          <div class="card-body d-flex flex-column justify-content-center align-items-center text-center">
-            <h5 class="card-title">Family Room</h5>
-            <p class="card-text">Spacious and child-friendly, this room is ideal for families with a king bed and twin beds setup.</p>
-            <a href="/pages/rooms-page.html#familyRoomCard" class="btn btn-outline-warning w-50 shadow">View More</a>
-          </div>
-        </div> -->
-
+      <div class="text-center mt-4 reveal">
+        <a href="/pages/gallery-page.html" class="btn-secondary-outline">
+          View Full Gallery <i class="fa-solid fa-images"></i>
+        </a>
       </div>
+    </div>
+  </section>
 
-      <div class="d-flex justify-content-center mt-4">
-        <button id="scroll-left" class="btn btn-warning mx-4 shadow">&#10094;</button>
-        <button id="scroll-right" class="btn btn-warning mx-4 shadow">&#10095;</button>
+  <!-- ====================== MAP ====================== -->
+  <section class="section" id="map-section">
+    <div class="section-inner">
+      <div class="text-center mb-4 reveal">
+        <div class="section-label" style="margin:0 auto 1rem">Location</div>
+        <h2 class="section-title">Find <em>Velvet Crown</em></h2>
+        <div class="gold-line center"></div>
+        <p class="section-sub" style="margin:0 auto">Nestled in a coveted location, perfectly positioned for exploration and tranquility.</p>
       </div>
-
-      <br>
-      <br>
-      <a href="/pages/rooms-page.html" class="card-link p-3 rounded bg-white shadow shadow"><button type="button" class="btn btn-outline w-50 shadow btn-gold-click-effect">ROOMS & SUITES</button></a>
-
-    </section>
-
-    <br>
-    <br>
-
-    <section id="features-section" class="main-page-section d-flex flex-column justify-content-center align-items-center">
-      <h2 class="features-h2">Elevated Experience</h2>
-      <p class="features-text">Unveil a world of refined indulgence, where immersive dining, serene wellness, and captivating ambiance redefine luxury at every turn.</p>
-
-      <div class="container text-center feature-stack">
-
-        <div id="barExperienceCard" class="row flex-column flex-md-row shadow rounded-4 mt-2">
-          <div class="col">
-            <img src="/assets/images/experiences/15a791ca-1f1a-45b9-b605-bbbc094b29bd.jpeg" class="img-fluid rounded float-end feature-image" alt="Bar image">
-          </div>
-          <div class="col d-flex justify-content-center align-items-center">
-            <div class="card w-100 w-md-50">
-              <div class="card-body">
-                <h5 class="card-title">Underground Sophistication</h5>
-                <p class="card-text">
-                  Step into a mesmerizing cave-style bar, where warm golden lights illuminate an exquisite collection of spirits. Experience the perfect fusion of mystery and indulgence in this hidden gem.
-                </p>
-                <a href="/pages/experiences-page.html#barExperience" class="card-link"><button type="button" class="btn btn-outline w-50 shadow btn-gold-click-effect">Read More</button></a>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div id="poolsideEleganceExperienceCard" class="row flex-column flex-md-row shadow rounded-4 mt-2">
-          <div class="col d-flex justify-content-center align-items-center">
-            <div class="card w-100 w-md-50">
-              <div class="card-body">
-                <h5 class="card-title">Poolside Elegance</h5>
-                <p class="card-text">
-                  Immerse yourself in a serene oasis where candlelit lounges meet the shimmering reflection of the pool. Unwind in a setting where luxury and tranquility blend seamlessly under the stars.
-                </p>
-                <a href="/pages/experiences-page.html#poolsideExperience" class="card-link"><button type="button" class="btn btn-outline w-50 shadow btn-gold-click-effect">Read More</button></a>
-              </div>
-            </div>
-          </div>
-          <div class="col">
-            <img src="/assets/images/experiences/Phuket Pictures _ Rosewood Phuket Thailand Resort Gallery.jpeg" class="feature-image img-fluid rounded float-start" alt="Poolside image">
-          </div>
-        </div>
-        <div id="spaExperienceCard" class="row flex-column flex-md-row shadow rounded-4 mt-2">
-          <div class="col">
-            <img src="/assets/images/gallery/hotel-spa.webp" class="img-fluid rounded float-end feature-image" alt="spa image">
-          </div>
-          <div class="col d-flex justify-content-center align-items-center">
-            <div class="card w-100 w-md-50">
-              <div class="card-body">
-                <h5 class="card-title">Spa Serenity</h5>
-                <p class="card-text">
-                  Escape to our world-class spa where skilled therapists, aromatic oils, and tranquil surroundings harmonize to soothe your soul. Rejuvenate with bespoke treatments tailored to your well-being.
-                </p>
-                <a href="/pages/experiences-page.html#spaExperience" class="card-link"><button type="button" class="btn btn-outline w-50 shadow btn-gold-click-effect">Read More</button></a>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div id="adventureExperienceCard" class="row flex-column flex-md-row shadow rounded-4 mt-2">
-          <div class="col d-flex justify-content-center align-items-center">
-            <div class="card w-100 w-md-50">
-              <div class="card-body">
-                <h5 class="card-title">Adventure Park Thrills</h5>
-                <p class="card-text">
-                  For thrill-seekers and families alike, our on-site adventure park offers zip lines, obstacle courses, and nature trails—all designed to energize and excite, just steps from the hotel.
-                </p>
-                <a href="/pages/experiences-page.html#adventureExperience" class="card-link"><button type="button" class="btn btn-outline w-50 shadow btn-gold-click-effect">Read More</button></a>
-              </div>
-            </div>
-          </div>
-          <div class="col">
-            <img src="/assets/images/gallery/The Best Outdoor Activities on Long Island - Mapping Megan.jpeg" class="feature-image img-fluid rounded float-start" alt="adventure park image">
-          </div>
-        </div>
-        <div id="kidsExperienceCard" class="row flex-column flex-md-row shadow rounded-4 mt-2">
-          <div class="col">
-            <img src="/assets/images/gallery/Baumhaus und Hängeschaukeln im Sandspielbereich.jpeg" class="img-fluid rounded float-end feature-image" alt="kids playground image">
-          </div>
-          <div class="col d-flex justify-content-center align-items-center">
-            <div class="card w-100 w-md-50">
-              <div class="card-body">
-                <h5 class="card-title">Woodland Whimsy</h5>
-                <p class="card-text">
-                  Let little imaginations soar in our enchanting treehouse haven. Nestled within a soft sand play area, children can swing, climb, and explore amidst hanging hammocks and wooden hideaways. It’s a safe, nature-inspired adventure that brings joy to every moment.
-                </p>
-                <a href="/pages/experiences-page.html#kidsExperience" class="card-link"><button type="button" class="btn btn-outline w-50 shadow btn-gold-click-effect">Read More</button></a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <br>
-        <br>
-        <a href="/pages/experiences-page.html" class="card-link p-3 rounded bg-white shadow"><button type="button" class="btn btn-outline w-50 shadow btn-gold-click-effect">View All</button></a>
-
-
-      </div>
-
-
-
-    </section>
-
-    <br>
-    <br>
-
-    <section id="events-section" class="main-page-section  position-relative text-center">
-      <h2>Events</h2>
-        <!-- main-page-section d-flex justify-content-center  text-center flex-column -->
-      <div class="event-container container text-center d-flex justify-content-center">
-
-        <!-- Weddings & Celebrations Card -->
-        <div id="weddingsCelebrationsHome" class="card w-100 w-md-50 rounded-4 shadow overflow-hidden border-0">
-          <img src="/assets/images/events/3521e5de-0b7f-4336-97bc-c96800cc780a.jpeg" class="card-img-top" alt="wedding venue image" style="object-fit: cover; height: 260px;">
-          <div class="card-body px-4 py-4 text-center">
-            <h5 class="card-title fw-bold text-uppercase gold-color-txt">Weddings & Celebrations</h5>
-            <p class="card-text text-muted">
-              Say "I do" in a setting where elegance meets enchantment. Velvet Crown offers bespoke wedding experiences with breathtaking venues, fine décor, and tailored service to craft your perfect day.
-            </p>
-            <a href="/pages/events-page.html#weddingsCelebrationsHome" class="btn"><button type="button" class="btn btn-outline w-50 shadow btn-gold-click-effect">Read More</button></a>
-          </div>
-        </div>
-
-        <!-- Meetings & Events Card -->
-        <div id="meetingsEventsHome" class="card w-100 w-md-50 rounded-4 shadow overflow-hidden border-0">
-          <img src="/assets/images/events/Meeting Room.jpeg" class="card-img-top" alt="meeting venue image" style="object-fit: cover; height: 260px;">
-          <div class="card-body px-4 py-4 text-center">
-            <h5 class="card-title fw-bold text-uppercase gold-color-txt">Meetings & Events</h5>
-            <p class="card-text text-muted">
-              Host with distinction in our exquisitely appointed event spaces. Whether it's a private boardroom session or a gala affair, every detail is seamlessly executed with flair and sophistication.
-            </p>
-            <a href="/pages/events-page.html#meetingsEventsHome" class="btn"><button type="button" class="btn btn-outline w-50 shadow btn-gold-click-effect">Read More</button></a>
-          </div>
-        </div>
-
-        
-        <!-- <div id="weddingsCelebrationsHome" class="card w-100 w-md-50 rounded-4 shadow">
-          <img src="/assets/images/events/3521e5de-0b7f-4336-97bc-c96800cc780a.jpeg" class="card-img-top" alt="wedding venue image">
-          <div class="card-body">
-            <h5 class="card-title">Weddings & Celebrations</h5>
-            <p class="card-text">
-              Say "I do" in pure elegance at Velvet Crown Hotel. With breathtaking venues and personalized service, we create unforgettable moments that bring your dream wedding to life.
-            </p>
-            <a href="/pages/events-page.html#weddingsCelebrationsHome" class="btn"><button type="button" class="btn btn-outline-warning shadow">Read More</button></a>
-          </div>
-        </div>
-
-        <div id="meetingsEventsHome" class="card w-100 w-md-50 rounded-4 shadow">
-          <img src="/assets/images/events/Meeting Room.jpeg" class="card-img-top" alt="meeting venue image">
-          <div class="card-body">
-            <h5 class="card-title">Meetings & Events</h5>
-            <p class="card-text">
-              Host seamless and sophisticated events at Velvet Crown Hotel, where luxury meets precision. From corporate meetings to grand celebrations, our stunning venues and expert planning ensure every moment is extraordinary.            
-            </p>
-            <a href="/pages/events-page.html#meetingsEventsHome" class="btn"><button type="button" class="btn btn-outline-warning shadow">Read More</button></a>
-          </div>
-        </div> -->
-
-      </div>
-
-      <br>
-      <br>
-      <a href="/pages/events-page.html" class="card-link p-3 rounded bg-white shadow shadow"><button type="button" class="btn btn-outline w-50 shadow btn-gold-click-effect">More About Events</button></a>
-
-        
-    </section>
-
-    <br>
-    <br>
-
-    <section id="map-section" class="main-page-section text-center py-5">
-      <h2 class="text-center mb-4">Find Us</h2>
-      <div class="w-100 ratio ratio-16x9 rounded-3 shadow">
+      <div class="reveal glass-card" style="border-radius:var(--radius-lg);overflow:hidden;height:400px">
         <iframe
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3162.923444771315!2d-122.08424928469189!3d37.42199997982573!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x808fb0f549db3c15%3A0x7e2bc6f3c23e36dc!2sGoogleplex!5e0!3m2!1sen!2sus!4v1681137045578!5m2!1sen!2sus"
-          class="w-100"
-          height="450"
-          style="border:0;"
-          allowfullscreen=""
-          loading="lazy"
-          referrerpolicy="no-referrer-when-downgrade"
-        ></iframe>
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.798467128636!2d79.87286631477298!3d6.9218374950173!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae2591614c80001%3A0xfdf5f647c753da78!2sColombo%2C%20Sri%20Lanka!5e0!3m2!1sen!2sus!4v1679900000000"
+          width="100%" height="100%" style="border:0;filter:invert(1) hue-rotate(180deg) brightness(0.85) saturate(0.7)" allowfullscreen loading="lazy"
+          title="Velvet Crown Hotel Location">
+        </iframe>
       </div>
-    </section>
-
-
-    <footer class="text-black pt-5 pb-4">
-      <div class="container">
-          <div class="row gy-4">
-              <!-- About Us -->
-              <div class="col-md-4">
-                  <h5 class="fw-bold"><i class="fas fa-info-circle me-2"></i>About Us</h5>
-                  <p>At Velvet Crown, we deliver top-quality services designed to exceed expectations. Stay connected for the latest updates and insights.</p>
-              </div>
-  
-              <!-- Quick Links -->
-              <div class="col-md-4">
-                  <h5 class="fw-bold"><i class="fas fa-link me-2"></i>Quick Links</h5>
-                  <ul class="list-unstyled">
-                      <li><a href="#" class="text-decoration-none text-black d-block py-1 hover-link"><i class="fas fa-home me-2"></i>Home</a></li>
-                      <li><a href="#" class="text-decoration-none text-black d-block py-1 hover-link"><i class="fas fa-envelope me-2"></i>Contact</a></li>
-                      <li><a href="#" class="text-decoration-none text-black d-block py-1 hover-link"><i class="fas fa-user-shield me-2"></i>Privacy Policy</a></li>
-                  </ul>
-              </div>
-  
-              <!-- Follow Us -->
-              <div class="col-md-4">
-                  <h5 class="fw-bold"><i class="fas fa-share-alt me-2"></i>Connect With Us</h5>
-                  <div class="d-flex align-items-center mb-2">
-                      <a href="https://www.linkedin.com/in/charuka-hansaja-756070346/" class="me-3 text-black fs-4" target="_blank" rel="noopener" aria-label="LinkedIn">
-                          <i class="fab fa-linkedin"></i>
-                      </a>
-                      <a href="https://github.com/Charuka974" class="me-3 text-black fs-4" target="_blank" rel="noopener" aria-label="GitHub">
-                          <i class="fab fa-github"></i>
-                      </a>
-                  </div>
-                  <p class="small"><i class="fas fa-envelope me-2"></i><a href="mailto:info@velvetcrown.com" class="text-black text-decoration-none">info@velvetcrown.com</a></p>
-              </div>
-          </div>
-  
-          <!-- Footer Bottom -->
-          <div class="text-center pt-4 mt-4 border-top">
-              <p class="mb-0">&copy; 2024 <strong>Velvet Crown</strong>. All Rights Reserved.</p>
-          </div>
+      <div class="text-center mt-3 reveal">
+        <p style="color:var(--muted);font-size:0.88rem"><i class="fa-solid fa-location-dot gold-txt me-2"></i> 1 Crown Boulevard, Colombo, Sri Lanka &nbsp;&nbsp;|&nbsp;&nbsp; <i class="fa-solid fa-phone gold-txt me-2"></i> +94 11 999 9999</p>
       </div>
+    </div>
+  </section>
+
+  <!-- ====================== FOOTER ====================== -->
+  <footer class="site-footer">
+    <div class="footer-grid">
+      <div>
+        <a class="footer-brand-logo" href="/">
+          <img src="/assets/images/hotel-logo-2.png" alt="Velvet Crown Logo">
+          <span class="footer-brand-name">Velvet Crown</span>
+        </a>
+        <p class="footer-brand-desc">
+          Where prestige meets perfection. An icon of ultra-luxury hospitality, crafting extraordinary experiences for the world's most discerning guests.
+        </p>
+        <div class="footer-social">
+          <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="#" aria-label="Twitter/X"><i class="fa-brands fa-x-twitter"></i></a>
+          <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+        </div>
+      </div>
+
+      <div>
+        <div class="footer-col-title">Explore</div>
+        <ul class="footer-links">
+          <li><a href="/pages/rooms-page.html">Rooms &amp; Suites</a></li>
+          <li><a href="/pages/experiences-page.html">Experiences</a></li>
+          <li><a href="/pages/events-page.html">Events</a></li>
+          <li><a href="/pages/gallery-page.html">Gallery</a></li>
+          <li><a href="/pages/offers-page.html">Special Offers</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <div class="footer-col-title">Stay</div>
+        <ul class="footer-links">
+          <li><a href="#" data-open-booking="">Book a Room</a></li>
+          <li><a href="#">Loyalty Programme</a></li>
+          <li><a href="#">Gift Vouchers</a></li>
+          <li><a href="#">Concierge</a></li>
+          <li><a href="#">Airport Transfer</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <div class="footer-col-title">Contact</div>
+        <ul class="footer-links">
+          <li><a href="tel:+94119999999"><i class="fa-solid fa-phone" style="color:var(--gold);margin-right:0.4rem"></i>+94 11 999 9999</a></li>
+          <li><a href="mailto:reservations@velvetcrown.com"><i class="fa-solid fa-envelope" style="color:var(--gold);margin-right:0.4rem"></i>reservations@velvetcrown.com</a></li>
+          <li><a href="#map-section"><i class="fa-solid fa-location-dot" style="color:var(--gold);margin-right:0.4rem"></i>1 Crown Boulevard, Colombo</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span>&copy; 2026 Velvet Crown Hotel. All rights reserved.</span>
+      <span style="display:flex;gap:1.5rem">
+        <a href="#" style="color:var(--muted);text-decoration:none;transition:color 0.18s ease" onmouseover="this.style.color='var(--gold-light)'" onmouseout="this.style.color='var(--muted)'">Privacy Policy</a>
+        <a href="#" style="color:var(--muted);text-decoration:none;transition:color 0.18s ease" onmouseover="this.style.color='var(--gold-light)'" onmouseout="this.style.color='var(--muted)'">Terms of Service</a>
+        <a href="#" style="color:var(--muted);text-decoration:none;transition:color 0.18s ease" onmouseover="this.style.color='var(--gold-light)'" onmouseout="this.style.color='var(--muted)'">Cookie Policy</a>
+      </span>
+    </div>
   </footer>
-  
-  
 
-    <script src="/js/Home.js"></script>
-        
+</div><!-- end page-wrapper -->
 
-    <script 
-        src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" 
-        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" 
-        crossorigin="anonymous">
-    </script>
-    
+<!-- Gallery Lightbox -->
+<div id="lightbox">
+  <button id="lightbox-close" aria-label="Close image"><i class="fa-solid fa-xmark"></i></button>
+  <img id="lightbox-img" src="" alt="Gallery image">
+</div>
+
+<!-- Sound Toggle -->
+<button id="sound-toggle" aria-label="Toggle ambient sound">
+  <i class="fa-solid fa-volume-xmark"></i>
+</button>
+
+<!-- ============================================================
+     SCRIPTS — CDN Libraries
+     ============================================================ -->
+<!-- Three.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<!-- GSAP + ScrollTrigger -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script>
+  if (typeof gsap !== 'undefined') {
+    gsap.registerPlugin(ScrollTrigger);
+    gsap.ScrollTrigger = ScrollTrigger;
+  }
+</script>
+<!-- Lenis Smooth Scroll -->
+<script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+<!-- Vanilla-Tilt -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js"></script>
+<!-- Main App -->
+<script src="/js/main.js"></script>
+
 </body>
 </html>

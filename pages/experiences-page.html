@@ -1,223 +1,345 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Elevated Experience - Velvet Crown Hotel</title>
-    <link rel="icon" href="/assets/images/hotel-logo-2.png" />
-
-    <link 
-    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" 
-    rel="stylesheet" 
-    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" 
-    crossorigin="anonymous"
-    >
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-    <link rel="stylesheet" href="/css/experience-page.css">
-    <link rel="stylesheet" href="/css/page-styles.css">
-    <link rel="stylesheet" href="/css/styles.css">
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Discover transformative experiences at Velvet Crown Hotel — from the Velvet Spa & Wellness to the underground bar, infinity pool, and woodland adventures.">
+  <title>Experiences — Velvet Crown Hotel</title>
+  <link rel="icon" href="/assets/images/hotel-logo-2.png"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <link rel="stylesheet" href="/css/styles.css">
 </head>
 <body>
 
-    <section id="experience-hero" class="main-page-section text-center d-flex flex-column justify-content-center align-items-center py-5 bg-dark text-white">
-        <div class="container">
-          <h1 class="gallery-title mb-3">Elevated Experiences at Velvet Crown Hotel</h1>
-          <p class="lead">Unveil a world of refined indulgence—where immersive dining, serene wellness, and captivating ambiance redefine luxury at every turn.</p>
+<canvas id="bg-canvas"></canvas>
+<div id="cursor-dot"></div>
+<div id="cursor-ring"></div>
+<div id="booking-drawer-overlay"></div>
+
+<!-- BOOKING DRAWER -->
+<aside id="booking-drawer" role="dialog" aria-label="Book Your Stay">
+  <div class="drawer-header">
+    <h2 class="drawer-title serif">Book Your Stay</h2>
+    <button class="drawer-close" aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
+  </div>
+  <div class="form-group">
+    <label class="form-label" for="booking-room">Room / Suite</label>
+    <select id="booking-room" class="form-control-dark">
+      <option value="deluxe">Deluxe Room — $240/night</option>
+      <option value="ocean_view">Ocean View Room — $320/night</option>
+      <option value="family">Family Room — $380/night</option>
+      <option value="executive">Executive Suite — $410/night</option>
+      <option value="penthouse">Penthouse Suite — $560/night</option>
+      <option value="presidential">Presidential Suite — $890/night</option>
+    </select>
+  </div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem">
+    <div class="form-group">
+      <label class="form-label" for="booking-checkin">Check-In</label>
+      <input id="booking-checkin" type="date" class="form-control-dark">
+    </div>
+    <div class="form-group">
+      <label class="form-label" for="booking-checkout">Check-Out</label>
+      <input id="booking-checkout" type="date" class="form-control-dark">
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="form-label" for="booking-guests">Guests</label>
+    <select id="booking-guests" class="form-control-dark">
+      <option value="2" selected>2 Guests</option>
+      <option value="1">1 Guest</option>
+      <option value="3">3 Guests</option>
+      <option value="4">4 Guests</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label class="form-label" for="booking-name">Full Name</label>
+    <input id="booking-name" type="text" placeholder="Your full name" class="form-control-dark">
+  </div>
+  <div class="form-group">
+    <label class="form-label" for="booking-email">Email</label>
+    <input id="booking-email" type="email" placeholder="your@email.com" class="form-control-dark">
+  </div>
+  <div class="price-display">
+    <div class="price-display-label">Estimated Total</div>
+    <div class="price-display-total" id="price-total">$240</div>
+    <div class="price-display-label" id="price-nights">1 night</div>
+  </div>
+  <button class="btn-primary-gold" style="justify-content:center;width:100%"><i class="fa-solid fa-crown"></i> Confirm Reservation</button>
+</aside>
+
+<!-- SEARCH OVERLAY -->
+<div id="search-overlay" role="search">
+  <div class="search-box-wrap">
+    <input id="search-input" class="search-input" type="search" placeholder="Search experiences…" autocomplete="off">
+    <button class="search-close" aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
+  </div>
+  <div id="search-results" class="search-results"></div>
+</div>
+
+<!-- NAVIGATION -->
+<nav class="nav-bar" aria-label="Main Navigation">
+  <a class="nav-logo" href="/"><img src="/assets/images/hotel-logo-2.png" alt="Logo"><span class="nav-logo-text">Velvet Crown</span></a>
+  <ul class="nav-links">
+    <li><a href="/">Home</a></li>
+    <li><a href="/pages/rooms-page.html">Rooms &amp; Suites</a></li>
+    <li><a href="/pages/experiences-page.html" style="color:var(--gold-light)">Experiences</a></li>
+    <li><a href="/pages/events-page.html">Events</a></li>
+    <li><a href="/pages/gallery-page.html">Gallery</a></li>
+    <li><a href="/pages/offers-page.html">Offers</a></li>
+  </ul>
+  <div class="nav-controls">
+    <button class="btn-search-nav" data-open-search aria-label="Search"><i class="fa-solid fa-magnifying-glass"></i></button>
+    <button class="btn-book" data-open-booking="">Book Stay</button>
+    <button class="nav-hamburger" aria-label="Open menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<div class="nav-mobile-overlay">
+  <button class="nav-mobile-close" style="position:absolute;top:1.5rem;right:1.5rem;background:transparent;border:1px solid var(--gold-border);color:var(--white-dim);width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.1rem;cursor:pointer;"><i class="fa-solid fa-xmark"></i></button>
+  <a href="/">Home</a>
+  <a href="/pages/rooms-page.html">Rooms &amp; Suites</a>
+  <a href="/pages/experiences-page.html">Experiences</a>
+  <a href="/pages/events-page.html">Events</a>
+  <a href="/pages/gallery-page.html">Gallery</a>
+  <a href="/pages/offers-page.html">Offers</a>
+</div>
+
+<div class="page-wrapper">
+
+  <!-- PAGE HERO -->
+  <section class="page-hero">
+    <div class="page-hero-bg">
+      <img src="/assets/images/gallery/hotel-spa.webp" alt="Velvet Spa">
+    </div>
+    <div class="page-hero-content">
+      <div class="section-label" style="margin:0 auto 1rem">Curated Experiences</div>
+      <h1 class="page-hero-title">Beyond the <em>Ordinary</em></h1>
+      <div class="gold-line center"></div>
+      <p class="page-hero-desc">Transformative moments curated for those who seek more than a stay — a story to carry forever.</p>
+    </div>
+  </section>
+
+  <!-- SPA & WELLNESS -->
+  <section class="section" id="spaCard">
+    <div class="section-inner">
+      <div class="about-split">
+        <div class="reveal">
+          <img src="/assets/images/gallery/Luxury Massage Room Serenity.jpeg" alt="Velvet Spa" style="width:100%;border-radius:var(--radius-lg);height:480px;object-fit:cover;border:1px solid var(--gold-border)">
         </div>
-    </section>
-
-    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
-
-        <!-- Experience Card: Underground Sophistication -->
-        <div class="col">
-          <div id="barExperience" class="experience-card card h-100 shadow rounded-4 overflow-hidden text-center border-0">
-            <img src="/assets/images/experiences/15a791ca-1f1a-45b9-b605-bbbc094b29bd.jpeg" class="card-img-top rounded-top-4" alt="Underground Bar">
-            <div class="card-body px-4 pb-4">
-              <h5 class="card-title fw-bold text-uppercase gold-color-txt">Underground Sophistication</h5>
-              <p class="card-text text-muted">Step into our hidden speakeasy, where amber lighting glows against vaulted stone walls, and an elite selection of rare spirits awaits your discovery.</p>
-              <ul class="list-unstyled text-start small mt-3 ps-4">
-                <li><i class="fa-solid fa-cocktail me-2 gold-color-txt"></i>Rare vintage liquors & mixologist-crafted cocktails</li>
-                <li><i class="fa-solid fa-lightbulb me-2 gold-color-txt"></i>Low golden lighting & velvet interiors</li>
-                <li><i class="fa-solid fa-user-secret me-2 gold-color-txt"></i>Invitation-only entry for a true VIP vibe</li>
-              </ul>
+        <div class="reveal" style="--reveal-delay:0.15s">
+          <div class="experience-card-icon"><i class="fa-solid fa-spa"></i></div>
+          <div class="section-label">Wellness &amp; Restoration</div>
+          <h2 class="section-title">Velvet Spa &amp; <em>Wellness</em></h2>
+          <div class="gold-line"></div>
+          <p class="section-sub mb-3">
+            Our award-winning spa is a sanctuary of holistic wellbeing. Drawing on ancient rituals and cutting-edge therapies, each treatment is a bespoke journey crafted for your renewal.
+          </p>
+          <div class="grid-2" style="margin-bottom:1.5rem">
+            <div class="glass-card" style="padding:1.2rem;text-align:center;border-radius:var(--radius-md)">
+              <i class="fa-solid fa-leaf" style="color:var(--gold-light);font-size:1.3rem;display:block;margin-bottom:0.5rem"></i>
+              <div style="font-size:0.82rem;color:var(--white-dim)">Signature Treatments</div>
+            </div>
+            <div class="glass-card" style="padding:1.2rem;text-align:center;border-radius:var(--radius-md)">
+              <i class="fa-solid fa-water" style="color:var(--gold-light);font-size:1.3rem;display:block;margin-bottom:0.5rem"></i>
+              <div style="font-size:0.82rem;color:var(--white-dim)">Thermal Pools &amp; Steam</div>
+            </div>
+            <div class="glass-card" style="padding:1.2rem;text-align:center;border-radius:var(--radius-md)">
+              <i class="fa-solid fa-dumbbell" style="color:var(--gold-light);font-size:1.3rem;display:block;margin-bottom:0.5rem"></i>
+              <div style="font-size:0.82rem;color:var(--white-dim)">Fitness &amp; Yoga Studio</div>
+            </div>
+            <div class="glass-card" style="padding:1.2rem;text-align:center;border-radius:var(--radius-md)">
+              <i class="fa-solid fa-moon" style="color:var(--gold-light);font-size:1.3rem;display:block;margin-bottom:0.5rem"></i>
+              <div style="font-size:0.82rem;color:var(--white-dim)">Moonlit Meditation</div>
             </div>
           </div>
+          <button class="btn-primary-gold" data-open-booking="">
+            <i class="fa-solid fa-spa"></i> Include Spa Package
+          </button>
         </div>
-
-        <!-- Experience Card: Poolside Elegance -->
-        <div class="col">
-          <div id="poolsideExperience" class="experience-card card h-100 shadow rounded-4 overflow-hidden text-center border-0">
-            <img src="/assets/images/experiences/Phuket Pictures _ Rosewood Phuket Thailand Resort Gallery.jpeg" class="card-img-top rounded-top-4" alt="Poolside Elegance">
-            <div class="card-body px-4 pb-4">
-              <h5 class="card-title fw-bold text-uppercase gold-color-txt">Poolside Elegance</h5>
-              <p class="card-text text-muted">As dusk falls, our tranquil pool transforms into a haven of twilight elegance—flickering candles, soft music, and the shimmer of water beneath the stars.</p>
-              <ul class="list-unstyled text-start small mt-3 ps-4">
-                <li><i class="fa-solid fa-water me-2 gold-color-txt"></i>Twilight reflections and ambient lighting</li>
-                <li><i class="fa-solid fa-chair me-2 gold-color-txt"></i>Luxurious loungers & attentive poolside service</li>
-                <li><i class="fa-solid fa-umbrella-beach me-2 gold-color-txt"></i>Secluded cabanas for private moments</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-
-        <!-- Experience Card: Spa Serenity -->
-        <div class="col">
-          <div id="spaExperience" class="experience-card card h-100 shadow rounded-4 overflow-hidden text-center border-0">
-            <img src="/assets/images/gallery/hotel-spa.webp" class="card-img-top rounded-top-4" alt="Spa Serenity">
-            <div class="card-body px-4 pb-4">
-              <h5 class="card-title fw-bold text-uppercase gold-color-txt">Spa Serenity</h5>
-              <p class="card-text text-muted">Immerse yourself in an oasis of calm. Our nature-inspired spa blends earthy textures with fragrant oils to create an unforgettable journey of renewal.</p>
-              <ul class="list-unstyled text-start small mt-3 ps-4">
-                <li><i class="fa-solid fa-spa me-2 gold-color-txt"></i>Holistic treatments by world-class therapists</li>
-                <li><i class="fa-solid fa-leaf me-2 gold-color-txt"></i>Eco-luxury oils and botanicals</li>
-                <li><i class="fa-solid fa-person-booth me-2 gold-color-txt"></i>Private spa suites with outdoor tranquility zones</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-
-        <!-- Experience Card: Adventure Park Thrills -->
-        <div class="col">
-          <div id="adventureExperience" class="experience-card card h-100 shadow rounded-4 overflow-hidden text-center border-0">
-            <img src="/assets/images/gallery/The Best Outdoor Activities on Long Island - Mapping Megan.jpeg" class="card-img-top rounded-top-4" alt="Adventure Park">
-            <div class="card-body px-4 pb-4">
-              <h5 class="card-title fw-bold text-uppercase gold-color-txt">Adventure Park Thrills</h5>
-              <p class="card-text text-muted">Reconnect with your wild side in our on-site nature park, where adrenaline meets serenity across zip lines, forest trails, and elevated rope challenges.</p>
-              <ul class="list-unstyled text-start small mt-3 ps-4">
-                <li><i class="fa-solid fa-person-hiking me-2 gold-color-txt"></i>Multi-level zip lines and aerial courses</li>
-                <li><i class="fa-solid fa-tree me-2 gold-color-txt"></i>Verdant forest paths & outdoor play zones</li>
-                <li><i class="fa-solid fa-user-shield me-2 gold-color-txt"></i>Professionally supervised for all ages</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-
-        <!-- Experience Card: Woodland Whimsy -->
-        <div class="col">
-          <div id="kidsExperience" class="experience-card card h-100 shadow rounded-4 overflow-hidden text-center border-0">
-            <img src="/assets/images/gallery/Baumhaus und Hängeschaukeln im Sandspielbereich.jpeg" class="card-img-top rounded-top-4" alt="Kids' Treehouse Play Area">
-            <div class="card-body px-4 pb-4">
-              <h5 class="card-title fw-bold text-uppercase gold-color-txt">Woodland Whimsy</h5>
-              <p class="card-text text-muted">A fairytale forest escape for children to imagine, explore, and play—featuring custom-built treehouses, soft-sand zones, and shaded hideaways.</p>
-              <ul class="list-unstyled text-start small mt-3 ps-4">
-                <li><i class="fa-solid fa-tree me-2 gold-color-txt"></i>Handcrafted treehouses & cozy hammocks</li>
-                <li><i class="fa-solid fa-children me-2 gold-color-txt"></i>Soft sand floor & tactile play experiences</li>
-                <li><i class="fa-solid fa-shield-heart me-2 gold-color-txt"></i>Secure, shaded & professionally monitored</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-
-
-    
-        <!-- <div id="barExperience" class="experience-card card text-center p-4 d-flex flex-column align-items-center rounded-4 shadow">
-          <img src="/assets/images/experiences/15a791ca-1f1a-45b9-b605-bbbc094b29bd.jpeg" alt="Underground Bar" class="experience-img">
-          <h2 class="card-title">Underground Sophistication</h2>
-          <p class="card-text">
-            Step into a cave-style bar, where warm golden lights highlight an exquisite collection of fine spirits and rare blends.
-          </p>
-          <ul class="details-list">
-            <li>Curated cocktail menu with rare liquors</li>
-            <li>Ambience enhanced by intimate lighting</li>
-            <li>Exclusive underground location for VIP guests</li>
-          </ul>
-        </div>
-    
-        <div id="poolsideExperience" class="experience-card card text-center p-4 d-flex flex-column align-items-center rounded-4 shadow">
-          <img src="/assets/images/experiences/Phuket Pictures _ Rosewood Phuket Thailand Resort Gallery.jpeg" alt="Poolside Elegance" class="experience-img">
-          <h2 class="card-title">Poolside Elegance</h2>
-          <p class="card-text">
-            Relax beside our shimmering pool where candlelit lounges and twilight reflections create a magical setting under the stars.
-          </p>
-          <ul class="details-list">
-            <li>Ambient evening lighting for ultimate relaxation</li>
-            <li>Loungers with poolside service</li>
-            <li>Private cabana rentals available</li>
-          </ul>
-        </div>
-    
-        <div id="spaExperience" class="experience-card card text-center p-4 d-flex flex-column align-items-center rounded-4 shadow">
-          <img src="/assets/images/gallery/hotel-spa.webp" alt="Spa Serenity" class="experience-img">
-          <h2 class="card-title">Spa Serenity</h2>
-          <p class="card-text">
-            Rejuvenate your body and soul at our tranquil spa, where expert therapists and nature-inspired therapies await.
-          </p>
-          <ul class="details-list">
-            <li>Bespoke massages and wellness treatments</li>
-            <li>Aromatic oils and natural skincare products</li>
-            <li>Private suites and outdoor relaxation areas</li>
-          </ul>
-        </div>
-    
-        <div id="adventureExperience" class="experience-card card text-center p-4 d-flex flex-column align-items-center rounded-4 shadow">
-          <img src="/assets/images/gallery/The Best Outdoor Activities on Long Island - Mapping Megan.jpeg" alt="Adventure Park" class="experience-img">
-          <h2 class="card-title">Adventure Park Thrills</h2>
-          <p class="card-text">
-            Unleash your adventurous side with on-site thrills perfect for families, couples, and nature lovers.
-          </p>
-          <ul class="details-list">
-            <li>Zip lines and aerial obstacle courses</li>
-            <li>Scenic hiking trails and outdoor challenges</li>
-            <li>Certified guides for safety and fun</li>
-          </ul>
-        </div>
-    
-        <div id="kidsExperience" class="experience-card card text-center p-4 d-flex flex-column align-items-center rounded-4 shadow">
-          <img src="/assets/images/gallery/Baumhaus und Hängeschaukeln im Sandspielbereich.jpeg" alt="Kids' Treehouse Play Area" class="experience-img">
-          <h2 class="card-title">Woodland Whimsy</h2>
-          <p class="card-text">
-            A dreamy retreat for our youngest guests—explore wooden hideouts, hammocks, and sand-filled fun zones.
-          </p>
-          <ul class="details-list">
-            <li>Treehouse and hanging swings for imaginative play</li>
-            <li>Soft sand base for safe exploration</li>
-            <li>Shaded, secure, and supervised</li>
-          </ul>
-        </div> -->
-    
       </div>
+    </div>
+  </section>
 
-      <section class="text-center py-5">
-        <a href="/index.html" class="btn btn-outline w-50 shadow btn-gold-click-effect">Back to Home</a>
-      </section>
-
-      <footer class="text-black pt-4">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-4">
-                    <h5>About Us</h5>
-                    <p>We provide top-quality services. Follow us for updates.</p>
-                </div>
-    
-                <div class="col-md-4">
-                    <h5>Quick Links</h5>
-                    <ul class="list-unstyled">
-                        <li><a href="/index.html" class="text-black text-decoration-none">Home</a></li>
-                        <li><a href="#" class="text-black text-decoration-none">Contact</a></li>
-                        <li><a href="#" class="text-black text-decoration-none">Privacy Policy</a></li>
-                    </ul>
-                </div>
-    
-                <div class="col-md-4">
-                    <h5>Follow Us</h5>
-                    <!-- <a href="#" class="social-links text-black me-3"><i class="fab fa-facebook"></i></a> -->
-                    <a href="https://www.linkedin.com/in/charuka-hansaja-756070346/" class="social-links text-black me-3"><i class="fab fa-linkedin"></i></a>
-                    <a href="https://github.com/Charuka974" class="social-links text-black me-3"><i class="fab fa-github"></i></a>
-                </div>
-            </div>
-    
-            <div class="text-center py-3 mt-3 border-top">
-                <p class="mb-0">&copy; 2024 Velvet Crown. All Rights Reserved.</p>
-            </div>
+  <!-- UNDERGROUND BAR -->
+  <section class="section" id="barCard" style="background:linear-gradient(135deg,var(--velvet) 0%,var(--surface) 100%)">
+    <div class="section-inner">
+      <div class="about-split" style="direction:rtl">
+        <div class="reveal" style="direction:ltr">
+          <img src="/assets/images/gallery/Al Coro reframes classic Italian dining through a moody Manhattan lens - The Spaces.jpeg" alt="Underground Bar" style="width:100%;border-radius:var(--radius-lg);height:480px;object-fit:cover;border:1px solid var(--gold-border)">
         </div>
-    </footer>
+        <div class="reveal" style="direction:ltr;--reveal-delay:0.15s">
+          <div class="experience-card-icon"><i class="fa-solid fa-martini-glass"></i></div>
+          <div class="section-label">Spirits &amp; Mixology</div>
+          <h2 class="section-title">The Gilded <em>Underground</em></h2>
+          <div class="gold-line"></div>
+          <p class="section-sub mb-3">
+            Descend below the lobby into our speakeasy-inspired cocktail sanctuary. Over 400 rare spirits, master mixologists, and a jazz programme that turns every evening into theatre.
+          </p>
+          <div style="margin-bottom:1.5rem">
+            <div style="display:flex;gap:0.8rem;align-items:center;margin-bottom:0.6rem"><i class="fa-solid fa-clock" style="color:var(--gold)"></i><span style="font-size:0.85rem;color:var(--white-dim)">Open nightly 6 PM — 2 AM</span></div>
+            <div style="display:flex;gap:0.8rem;align-items:center;margin-bottom:0.6rem"><i class="fa-solid fa-music" style="color:var(--gold)"></i><span style="font-size:0.85rem;color:var(--white-dim)">Live jazz quartet, Fri &amp; Sat</span></div>
+            <div style="display:flex;gap:0.8rem;align-items:center;margin-bottom:0.6rem"><i class="fa-solid fa-wine-bottle" style="color:var(--gold)"></i><span style="font-size:0.85rem;color:var(--white-dim)">400+ curated rare spirits</span></div>
+            <div style="display:flex;gap:0.8rem;align-items:center"><i class="fa-solid fa-user-tie" style="color:var(--gold)"></i><span style="font-size:0.85rem;color:var(--white-dim)">Master mixologist on station</span></div>
+          </div>
+          <button class="btn-primary-gold" data-open-booking="">
+            <i class="fa-solid fa-martini-glass"></i> Reserve a Table
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <script 
-        src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" 
-        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" 
-        crossorigin="anonymous">
-    </script>
-    
+  <!-- INFINITY POOL -->
+  <section class="section" id="poolCard">
+    <div class="section-inner">
+      <div class="about-split">
+        <div class="reveal">
+          <img src="/assets/images/gallery/Infinity pool meets infinite horizon in Capri, Italy, painting the sky in liquid gold.jpeg" alt="Infinity Pool" style="width:100%;border-radius:var(--radius-lg);height:480px;object-fit:cover;border:1px solid var(--gold-border)">
+        </div>
+        <div class="reveal" style="--reveal-delay:0.15s">
+          <div class="experience-card-icon"><i class="fa-solid fa-water-ladder"></i></div>
+          <div class="section-label">Poolside Serenity</div>
+          <h2 class="section-title">Starlit <em>Serenity</em> Pool</h2>
+          <div class="gold-line"></div>
+          <p class="section-sub mb-3">
+            Our infinity-edge pool dissolves into the horizon, creating a mirror of liquid gold at dusk. Settle into a private cabana with handcrafted cocktails and let the world fade away.
+          </p>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1.5rem">
+            <div style="font-size:0.85rem;color:var(--white-dim);display:flex;gap:0.6rem;align-items:flex-start"><i class="fa-solid fa-umbrella-beach" style="color:var(--gold);margin-top:0.2rem"></i><span>Private cabanas with butler service</span></div>
+            <div style="font-size:0.85rem;color:var(--white-dim);display:flex;gap:0.6rem;align-items:flex-start"><i class="fa-solid fa-cocktail" style="color:var(--gold);margin-top:0.2rem"></i><span>In-water cocktail bar</span></div>
+            <div style="font-size:0.85rem;color:var(--white-dim);display:flex;gap:0.6rem;align-items:flex-start"><i class="fa-solid fa-sun" style="color:var(--gold);margin-top:0.2rem"></i><span>Heated year-round pool</span></div>
+            <div style="font-size:0.85rem;color:var(--white-dim);display:flex;gap:0.6rem;align-items:flex-start"><i class="fa-solid fa-children" style="color:var(--gold);margin-top:0.2rem"></i><span>Separate children's pool</span></div>
+          </div>
+          <button class="btn-primary-gold" data-open-booking="">
+            <i class="fa-solid fa-water-ladder"></i> Book Pool Cabana
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WOODLAND ADVENTURE -->
+  <section class="section" id="adventureCard" style="background:linear-gradient(135deg,var(--surface) 0%,var(--velvet) 100%)">
+    <div class="section-inner">
+      <div class="about-split" style="direction:rtl">
+        <div class="reveal" style="direction:ltr">
+          <img src="/assets/images/gallery/The Best Outdoor Activities on Long Island - Mapping Megan.jpeg" alt="Woodland Adventure" style="width:100%;border-radius:var(--radius-lg);height:480px;object-fit:cover;border:1px solid var(--gold-border)">
+        </div>
+        <div class="reveal" style="direction:ltr;--reveal-delay:0.15s">
+          <div class="experience-card-icon"><i class="fa-solid fa-tree"></i></div>
+          <div class="section-label">Nature &amp; Adventure</div>
+          <h2 class="section-title">Woodland <em>Adventure Zone</em></h2>
+          <div class="gold-line"></div>
+          <p class="section-sub mb-3">
+            Venture beyond the estate into curated wilderness experiences — from guided forest treks to high-ropes canopy adventures and stargazing dinners under ancient oaks.
+          </p>
+          <div style="margin-bottom:1.5rem">
+            <div style="display:flex;gap:0.8rem;align-items:center;margin-bottom:0.6rem"><i class="fa-solid fa-person-hiking" style="color:var(--gold)"></i><span style="font-size:0.85rem;color:var(--white-dim)">Guided woodland treks</span></div>
+            <div style="display:flex;gap:0.8rem;align-items:center;margin-bottom:0.6rem"><i class="fa-solid fa-rope" style="color:var(--gold)"></i><span style="font-size:0.85rem;color:var(--white-dim)">High-ropes canopy adventure</span></div>
+            <div style="display:flex;gap:0.8rem;align-items:center;margin-bottom:0.6rem"><i class="fa-solid fa-star" style="color:var(--gold)"></i><span style="font-size:0.85rem;color:var(--white-dim)">Stargazing dinner under the stars</span></div>
+            <div style="display:flex;gap:0.8rem;align-items:center"><i class="fa-solid fa-child" style="color:var(--gold)"></i><span style="font-size:0.85rem;color:var(--white-dim)">Kids adventure camp</span></div>
+          </div>
+          <button class="btn-primary-gold" data-open-booking="">
+            <i class="fa-solid fa-tree"></i> Book Adventure
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- KIDS CLUB -->
+  <section class="section" id="kidsCard">
+    <div class="section-inner">
+      <div class="text-center mb-4 reveal">
+        <div class="section-label" style="margin:0 auto 1rem">Family</div>
+        <h2 class="section-title">Crown <em>Kids Club</em></h2>
+        <div class="gold-line center"></div>
+        <p class="section-sub" style="margin:0 auto">A magical world supervised by dedicated childcare specialists — so parents can truly relax.</p>
+      </div>
+      <div class="grid-3 stagger-group">
+        <div class="experience-card stagger-item" style="min-height:300px" data-tilt>
+          <div class="experience-card-bg"><img src="/assets/images/gallery/Baumhaus und Hängeschaukeln im Sandspielbereich.jpeg" alt="Outdoor Play"></div>
+          <div class="experience-card-overlay"></div>
+          <div class="experience-card-content">
+            <h3 class="experience-card-title" style="font-size:1.2rem">Outdoor Play</h3>
+            <p class="experience-card-desc" style="font-size:0.8rem">Treehouse, climbing frames, and sandpits in a safe garden.</p>
+          </div>
+        </div>
+        <div class="experience-card stagger-item" style="min-height:300px" data-tilt>
+          <div class="experience-card-bg"><img src="/assets/images/gallery/Elegant Fine Dining_.jpeg" alt="Kids Dining"></div>
+          <div class="experience-card-overlay"></div>
+          <div class="experience-card-content">
+            <h3 class="experience-card-title" style="font-size:1.2rem">Kids Dining</h3>
+            <p class="experience-card-desc" style="font-size:0.8rem">Nutritious, child-approved menus crafted by our Michelin-starred team.</p>
+          </div>
+        </div>
+        <div class="experience-card stagger-item" style="min-height:300px" data-tilt>
+          <div class="experience-card-bg"><img src="/assets/images/gallery/Event Offerings _ The Social Loft _ Glenview Event Space.jpeg" alt="Arts & Crafts"></div>
+          <div class="experience-card-overlay"></div>
+          <div class="experience-card-content">
+            <h3 class="experience-card-title" style="font-size:1.2rem">Arts &amp; Learning</h3>
+            <p class="experience-card-desc" style="font-size:0.8rem">Creative workshops, storytelling, and cultural exploration.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="footer-grid">
+      <div>
+        <a class="footer-brand-logo" href="/"><img src="/assets/images/hotel-logo-2.png" alt="Logo"><span class="footer-brand-name">Velvet Crown</span></a>
+        <p class="footer-brand-desc">Where prestige meets perfection. An icon of ultra-luxury hospitality.</p>
+        <div class="footer-social">
+          <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="#" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">Experiences</div>
+        <ul class="footer-links">
+          <li><a href="#spaCard">Spa &amp; Wellness</a></li>
+          <li><a href="#barCard">Underground Bar</a></li>
+          <li><a href="#poolCard">Infinity Pool</a></li>
+          <li><a href="#adventureCard">Woodland Adventure</a></li>
+          <li><a href="#kidsCard">Kids Club</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Stay</div>
+        <ul class="footer-links">
+          <li><a href="/pages/rooms-page.html">Rooms &amp; Suites</a></li>
+          <li><a href="/pages/offers-page.html">Special Offers</a></li>
+          <li><a href="/pages/events-page.html">Events</a></li>
+          <li><a href="/pages/gallery-page.html">Gallery</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Contact</div>
+        <ul class="footer-links">
+          <li><a href="tel:+94119999999">+94 11 999 9999</a></li>
+          <li><a href="mailto:experiences@velvetcrown.com">experiences@velvetcrown.com</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 Velvet Crown Hotel. All rights reserved.</span>
+    </div>
+  </footer>
+</div>
+
+<div id="lightbox"><button id="lightbox-close" aria-label="Close"><i class="fa-solid fa-xmark"></i></button><img id="lightbox-img" src="" alt="Experience"></div>
+<button id="sound-toggle" aria-label="Toggle sound"><i class="fa-solid fa-volume-xmark"></i></button>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script>if(typeof gsap!=='undefined'){gsap.registerPlugin(ScrollTrigger);gsap.ScrollTrigger=ScrollTrigger;}</script>
+<script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js"></script>
+<script src="/js/main.js"></script>
 </body>
 </html>

@@ -1,139 +1,385 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Gallery - Velvet Crown Hotel</title>
-  <link 
-    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" 
-    rel="stylesheet" 
-    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" 
-    crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-
-    <link rel="stylesheet" href="/css/gallery-page.css">
-    <link rel="stylesheet" href="/css/styles.css">
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Explore the Velvet Crown Hotel gallery — stunning photography of rooms, suites, dining, spa, pool, and events venues.">
+  <title>Gallery — Velvet Crown Hotel</title>
+  <link rel="icon" href="/assets/images/hotel-logo-2.png"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <link rel="stylesheet" href="/css/styles.css">
+  <style>
+    /* Enhanced masonry with fade-in per item */
+    .gallery-grid { column-gap: 1.2rem; }
+    .gallery-item {
+      margin-bottom: 1.2rem;
+      transform: scale(0.96);
+      opacity: 0;
+      transition: transform 0.55s cubic-bezier(0.16,1,0.3,1), opacity 0.55s ease;
+    }
+    .gallery-item.in-view { transform: scale(1); opacity: 1; }
+    .gallery-category-label {
+      position: absolute;
+      bottom: 0.75rem;
+      left: 0.75rem;
+      font-family: var(--font-display);
+      font-size: 0.58rem;
+      letter-spacing: 0.18em;
+      color: var(--surface);
+      background: linear-gradient(135deg, var(--gold), var(--gold-light));
+      padding: 0.2rem 0.7rem;
+      border-radius: 20px;
+      font-weight: 600;
+      opacity: 0;
+      transform: translateY(8px);
+      transition: opacity 0.3s ease, transform 0.3s ease;
+      z-index: 3;
+    }
+    .gallery-item:hover .gallery-category-label { opacity: 1; transform: translateY(0); }
+  </style>
 </head>
 <body>
 
-  <section id="gallery-hero" class="main-page-section text-center d-flex flex-column justify-content-center align-items-center py-5 bg-dark text-white">
-    <div class="container">
-      <h1 class="gallery-title mb-3">Our Gallery</h1>
-      <p class="lead">A Glimpse into Velvet Crown’s World of Elegance & Luxury</p>
+<canvas id="bg-canvas"></canvas>
+<div id="cursor-dot"></div>
+<div id="cursor-ring"></div>
+<div id="booking-drawer-overlay"></div>
+
+<!-- BOOKING DRAWER -->
+<aside id="booking-drawer" role="dialog" aria-label="Book Your Stay">
+  <div class="drawer-header">
+    <h2 class="drawer-title serif">Book Your Stay</h2>
+    <button class="drawer-close" aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
+  </div>
+  <div class="form-group">
+    <label class="form-label" for="booking-room">Room / Suite</label>
+    <select id="booking-room" class="form-control-dark">
+      <option value="deluxe">Deluxe Room — $240/night</option>
+      <option value="executive">Executive Suite — $410/night</option>
+      <option value="presidential">Presidential Suite — $890/night</option>
+    </select>
+  </div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem">
+    <div class="form-group"><label class="form-label" for="booking-checkin">Check-In</label><input id="booking-checkin" type="date" class="form-control-dark"></div>
+    <div class="form-group"><label class="form-label" for="booking-checkout">Check-Out</label><input id="booking-checkout" type="date" class="form-control-dark"></div>
+  </div>
+  <div class="form-group"><label class="form-label" for="booking-guests">Guests</label><select id="booking-guests" class="form-control-dark"><option value="2" selected>2 Guests</option><option value="1">1 Guest</option></select></div>
+  <div class="form-group"><label class="form-label" for="booking-name">Full Name</label><input id="booking-name" type="text" placeholder="Your full name" class="form-control-dark"></div>
+  <div class="form-group"><label class="form-label" for="booking-email">Email</label><input id="booking-email" type="email" placeholder="your@email.com" class="form-control-dark"></div>
+  <div class="price-display">
+    <div class="price-display-label">Estimated Total</div>
+    <div class="price-display-total" id="price-total">$240</div>
+    <div class="price-display-label" id="price-nights">1 night</div>
+  </div>
+  <button class="btn-primary-gold" style="justify-content:center;width:100%"><i class="fa-solid fa-crown"></i> Confirm Reservation</button>
+</aside>
+
+<!-- SEARCH -->
+<div id="search-overlay" role="search">
+  <div class="search-box-wrap">
+    <input id="search-input" class="search-input" type="search" placeholder="Search gallery…" autocomplete="off">
+    <button class="search-close" aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
+  </div>
+  <div id="search-results" class="search-results"></div>
+</div>
+
+<!-- NAVIGATION -->
+<nav class="nav-bar" aria-label="Main Navigation">
+  <a class="nav-logo" href="/"><img src="/assets/images/hotel-logo-2.png" alt="Logo"><span class="nav-logo-text">Velvet Crown</span></a>
+  <ul class="nav-links">
+    <li><a href="/">Home</a></li>
+    <li><a href="/pages/rooms-page.html">Rooms &amp; Suites</a></li>
+    <li><a href="/pages/experiences-page.html">Experiences</a></li>
+    <li><a href="/pages/events-page.html">Events</a></li>
+    <li><a href="/pages/gallery-page.html" style="color:var(--gold-light)">Gallery</a></li>
+    <li><a href="/pages/offers-page.html">Offers</a></li>
+  </ul>
+  <div class="nav-controls">
+    <button class="btn-search-nav" data-open-search aria-label="Search"><i class="fa-solid fa-magnifying-glass"></i></button>
+    <button class="btn-book" data-open-booking="">Book Stay</button>
+    <button class="nav-hamburger" aria-label="Open menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<div class="nav-mobile-overlay">
+  <button class="nav-mobile-close" style="position:absolute;top:1.5rem;right:1.5rem;background:transparent;border:1px solid var(--gold-border);color:var(--white-dim);width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.1rem;cursor:pointer;"><i class="fa-solid fa-xmark"></i></button>
+  <a href="/">Home</a><a href="/pages/rooms-page.html">Rooms</a><a href="/pages/experiences-page.html">Experiences</a><a href="/pages/events-page.html">Events</a><a href="/pages/gallery-page.html">Gallery</a><a href="/pages/offers-page.html">Offers</a>
+</div>
+
+<div class="page-wrapper">
+
+  <!-- PAGE HERO -->
+  <section class="page-hero">
+    <div class="page-hero-bg">
+      <img src="/assets/images/gallery/AN INVITING HOTEL LOBBY DESIGN !.jpeg" alt="Velvet Crown Gallery">
+    </div>
+    <div class="page-hero-content">
+      <div class="section-label" style="margin:0 auto 1rem">Visual Story</div>
+      <h1 class="page-hero-title">Glimpses of <em>Grandeur</em></h1>
+      <div class="gold-line center"></div>
+      <p class="page-hero-desc">A curated visual journey through the iconic spaces, timeless elegance, and extraordinary experiences of Velvet Crown Hotel.</p>
     </div>
   </section>
 
-  <section id="gallery" class="main-page-section py-5">
+  <!-- GALLERY FILTERS + GRID -->
+  <section class="section">
+    <div class="section-inner">
 
-    <div class="container">
+      <!-- Filter Tabs -->
+      <div class="filter-tabs" id="gallery-tabs">
+        <button class="filter-tab active" data-filter="all">All</button>
+        <button class="filter-tab" data-filter="rooms">Rooms &amp; Suites</button>
+        <button class="filter-tab" data-filter="dining">Dining &amp; Bars</button>
+        <button class="filter-tab" data-filter="spa">Spa &amp; Wellness</button>
+        <button class="filter-tab" data-filter="pool">Pool &amp; Outdoors</button>
+        <button class="filter-tab" data-filter="events">Events</button>
+        <button class="filter-tab" data-filter="lobby">Lobby &amp; Spaces</button>
+      </div>
 
-      <div class="row g-4">
+      <!-- Masonry Grid -->
+      <div class="gallery-grid" id="gallery-grid">
 
-        <div class="col-12 col-sm-6 col-lg-4">
-          <div class="card border-0 shadow-sm">
-            <img src="/assets/images/gallery/Luxury hotel lobby lounge.jpeg" class="card-img-top gallery-img rounded" alt="Hotel Lobby">
-          </div>
+        <!-- Lobby & Spaces -->
+        <div class="gallery-item" data-category="lobby">
+          <img src="/assets/images/gallery/AN INVITING HOTEL LOBBY DESIGN !.jpeg" alt="Hotel Lobby">
+          <div class="gallery-item-overlay"><i class="fa-solid fa-expand"></i></div>
+          <span class="gallery-category-label">Lobby</span>
         </div>
-        <div class="col-12 col-sm-6 col-lg-4">
-            <div class="card border-0 shadow-sm">
-              <img src="/assets/images/gallery/AN INVITING HOTEL LOBBY DESIGN !.jpeg" class="card-img-top gallery-img rounded" alt="Hotel Lobby">
-            </div>
+
+        <div class="gallery-item" data-category="lobby">
+          <img src="/assets/images/gallery/Luxury hotel lobby lounge.jpeg" alt="Lobby Lounge">
+          <div class="gallery-item-overlay"><i class="fa-solid fa-expand"></i></div>
+          <span class="gallery-category-label">Lounge</span>
         </div>
-        <div class="col-12 col-sm-6 col-lg-4">
-          <div class="card border-0 shadow-sm">
-            <img src="/assets/images/gallery/spadownload.jpeg" class="card-img-top gallery-img rounded" alt="Luxury Spa">
-          </div>
+
+        <!-- Pool & Outdoors -->
+        <div class="gallery-item" data-category="pool">
+          <img src="/assets/images/gallery/Infinity pool meets infinite horizon in Capri, Italy, painting the sky in liquid gold.jpeg" alt="Infinity Pool">
+          <div class="gallery-item-overlay"><i class="fa-solid fa-expand"></i></div>
+          <span class="gallery-category-label">Pool</span>
         </div>
-        <div class="col-12 col-sm-6 col-lg-4">
-            <div class="card border-0 shadow-sm">
-              <img src="/assets/images/gallery/Luxury Massage Room Serenity.jpeg" class="card-img-top gallery-img rounded" alt="Luxury Spa">
-            </div>
+
+        <!-- Dining -->
+        <div class="gallery-item" data-category="dining">
+          <img src="/assets/images/gallery/Elegant Fine Dining_.jpeg" alt="Fine Dining">
+          <div class="gallery-item-overlay"><i class="fa-solid fa-expand"></i></div>
+          <span class="gallery-category-label">Dining</span>
         </div>
-        <div class="col-12 col-sm-6 col-lg-4">
-          <div class="card border-0 shadow-sm">
-            <img src="/assets/images/gallery/Al Coro reframes classic Italian dining through a moody Manhattan lens - The Spaces.jpeg" class="card-img-top gallery-img rounded" alt="Fine Dining">
-          </div>
+
+        <div class="gallery-item" data-category="dining">
+          <img src="/assets/images/gallery/Al Coro reframes classic Italian dining through a moody Manhattan lens - The Spaces.jpeg" alt="Bar">
+          <div class="gallery-item-overlay"><i class="fa-solid fa-expand"></i></div>
+          <span class="gallery-category-label">Bar</span>
         </div>
-        <div class="col-12 col-sm-6 col-lg-4">
-            <div class="card border-0 shadow-sm">
-              <img src="/assets/images/gallery/Elegant Fine Dining_.jpeg" class="card-img-top gallery-img rounded" alt="Fine Dining">
-            </div>
+
+        <!-- Spa -->
+        <div class="gallery-item" data-category="spa">
+          <img src="/assets/images/gallery/hotel-spa.webp" alt="Spa">
+          <div class="gallery-item-overlay"><i class="fa-solid fa-expand"></i></div>
+          <span class="gallery-category-label">Spa</span>
         </div>
-        <div class="col-12 col-sm-6 col-lg-4">
-          <div class="card border-0 shadow-sm">
-            <img src="/assets/images/gallery/Infinity pool meets infinite horizon in Capri, Italy, painting the sky in liquid gold.jpeg" class="card-img-top gallery-img rounded" alt="Infinity Pool">
-          </div>
+
+        <div class="gallery-item" data-category="spa">
+          <img src="/assets/images/gallery/Luxury Massage Room Serenity.jpeg" alt="Massage Room">
+          <div class="gallery-item-overlay"><i class="fa-solid fa-expand"></i></div>
+          <span class="gallery-category-label">Wellness</span>
         </div>
-        <div class="col-12 col-sm-6 col-lg-4">
-            <div class="card border-0 shadow-sm">
-              <img src="/assets/images/gallery/Island Villas with Stunning Ocean Views.jpeg" class="card-img-top gallery-img rounded" alt="Infinity Pool">
-            </div>
+
+        <div class="gallery-item" data-category="spa">
+          <img src="/assets/images/gallery/spadownload.jpeg" alt="Spa Treatment">
+          <div class="gallery-item-overlay"><i class="fa-solid fa-expand"></i></div>
+          <span class="gallery-category-label">Spa</span>
         </div>
-        <div class="col-12 col-sm-6 col-lg-4">
-          <div class="card border-0 shadow-sm">
-            <img src="/assets/images/gallery/The Bodrum EDITION, Bodrum • The Top Most Exclusive 5-Star Luxury Beach Hotels in Bodrum, Turkey.jpeg" class="card-img-top gallery-img rounded" alt="Luxury Room">
-          </div>
+
+        <!-- Pool & Outdoors cont -->
+        <div class="gallery-item" data-category="pool">
+          <img src="/assets/images/gallery/The Bodrum EDITION, Bodrum • The Top Most Exclusive 5-Star Luxury Beach Hotels in Bodrum, Turkey.jpeg" alt="Beach Pool">
+          <div class="gallery-item-overlay"><i class="fa-solid fa-expand"></i></div>
+          <span class="gallery-category-label">Outdoors</span>
         </div>
-        <div class="col-12 col-sm-6 col-lg-4">
-            <div class="card border-0 shadow-sm">
-              <img src="/assets/images/gallery/cuarto grande!.jpeg" class="card-img-top gallery-img rounded" alt="Luxury Room">
-            </div>
+
+        <div class="gallery-item" data-category="pool">
+          <img src="/assets/images/gallery/Island Villas with Stunning Ocean Views.jpeg" alt="Ocean Villas">
+          <div class="gallery-item-overlay"><i class="fa-solid fa-expand"></i></div>
+          <span class="gallery-category-label">Villas</span>
         </div>
-        <div class="col-12 col-sm-6 col-lg-4">
-          <div class="card border-0 shadow-sm">
-            <img src="/assets/images/gallery/Event Offerings _ The Social Loft _ Glenview Event Space.jpeg" class="card-img-top gallery-img rounded" alt="Event Space">
-          </div>
+
+        <!-- Events -->
+        <div class="gallery-item" data-category="events">
+          <img src="/assets/images/gallery/Meetings and Events at The Ballantyne, Charlotte, North Carolina.jpeg" alt="Events Ballroom">
+          <div class="gallery-item-overlay"><i class="fa-solid fa-expand"></i></div>
+          <span class="gallery-category-label">Events</span>
         </div>
-        <div class="col-12 col-sm-6 col-lg-4">
-            <div class="card border-0 shadow-sm">
-              <img src="/assets/images/gallery/Meetings and Events at The Ballantyne, Charlotte, North Carolina.jpeg" class="card-img-top gallery-img rounded" alt="Event Space">
-            </div>
+
+        <div class="gallery-item" data-category="events">
+          <img src="/assets/images/gallery/Event Offerings _ The Social Loft _ Glenview Event Space.jpeg" alt="Event Space">
+          <div class="gallery-item-overlay"><i class="fa-solid fa-expand"></i></div>
+          <span class="gallery-category-label">Social</span>
         </div>
+
+        <!-- Rooms -->
+        <div class="gallery-item" data-category="rooms">
+          <img src="/assets/images/rooms/Elegant Nighttime Retreat Luxury Penthouse Bedroom_ AI royalty free stock photography.jpeg" alt="Penthouse">
+          <div class="gallery-item-overlay"><i class="fa-solid fa-expand"></i></div>
+          <span class="gallery-category-label">Penthouse</span>
+        </div>
+
+        <div class="gallery-item" data-category="rooms">
+          <img src="/assets/images/rooms/Executive suite.jpeg" alt="Executive Suite">
+          <div class="gallery-item-overlay"><i class="fa-solid fa-expand"></i></div>
+          <span class="gallery-category-label">Suite</span>
+        </div>
+
+        <div class="gallery-item" data-category="rooms">
+          <img src="/assets/images/rooms/Presidential Suite _ Alexandria, Egypt Suites _ Four Seasons Hotel.jpeg" alt="Presidential Suite">
+          <div class="gallery-item-overlay"><i class="fa-solid fa-expand"></i></div>
+          <span class="gallery-category-label">Presidential</span>
+        </div>
+
+        <div class="gallery-item" data-category="rooms">
+          <img src="/assets/images/rooms/ocean view room.jpeg" alt="Ocean View">
+          <div class="gallery-item-overlay"><i class="fa-solid fa-expand"></i></div>
+          <span class="gallery-category-label">Ocean View</span>
+        </div>
+
+        <div class="gallery-item" data-category="rooms">
+          <img src="/assets/images/rooms/The St_ Regis Shenzhen—Deluxe Room - scenic view.jpeg" alt="Deluxe Room">
+          <div class="gallery-item-overlay"><i class="fa-solid fa-expand"></i></div>
+          <span class="gallery-category-label">Deluxe</span>
+        </div>
+
+        <div class="gallery-item" data-category="rooms">
+          <img src="/assets/images/rooms/family room.jpeg" alt="Family Room">
+          <div class="gallery-item-overlay"><i class="fa-solid fa-expand"></i></div>
+          <span class="gallery-category-label">Family</span>
+        </div>
+
+        <!-- Kids -->
+        <div class="gallery-item" data-category="pool">
+          <img src="/assets/images/gallery/Baumhaus und Hängeschaukeln im Sandspielbereich.jpeg" alt="Kids Play">
+          <div class="gallery-item-overlay"><i class="fa-solid fa-expand"></i></div>
+          <span class="gallery-category-label">Kids Club</span>
+        </div>
+
+        <!-- Outdoor Activities -->
+        <div class="gallery-item" data-category="pool">
+          <img src="/assets/images/gallery/The Best Outdoor Activities on Long Island - Mapping Megan.jpeg" alt="Adventures">
+          <div class="gallery-item-overlay"><i class="fa-solid fa-expand"></i></div>
+          <span class="gallery-category-label">Adventure</span>
+        </div>
+
+        <!-- Hotel exterior -->
+        <div class="gallery-item" data-category="lobby">
+          <img src="/assets/images/roberto-nickson-MA82mPIZeGI-unsplash.jpg" alt="Hotel Exterior">
+          <div class="gallery-item-overlay"><i class="fa-solid fa-expand"></i></div>
+          <span class="gallery-category-label">Exterior</span>
+        </div>
+
+        <div class="gallery-item" data-category="lobby">
+          <img src="/assets/images/gallery/cuarto grande!.jpeg" alt="Grand Suite Living">
+          <div class="gallery-item-overlay"><i class="fa-solid fa-expand"></i></div>
+          <span class="gallery-category-label">Grand Living</span>
+        </div>
+
+      </div><!-- end gallery-grid -->
+
+      <div class="text-center mt-4 reveal">
+        <button class="btn-primary-gold" data-open-booking="">
+          <i class="fa-solid fa-crown"></i> Be Part of the Story — Book Now
+        </button>
       </div>
     </div>
   </section>
 
-  <section class="text-center py-5">
-    <a href="/index.html" class="btn btn-outline w-50 shadow btn-gold-click-effect">Back to Home</a>
-  </section>
-
-  <footer class="text-black pt-4">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-4">
-                <h5>About Us</h5>
-                <p>We provide top-quality services. Follow us for updates.</p>
-            </div>
-
-            <div class="col-md-4">
-                <h5>Quick Links</h5>
-                <ul class="list-unstyled">
-                    <li><a href="/index.html" class="text-black text-decoration-none">Home</a></li>
-                    <li><a href="#" class="text-black text-decoration-none">Contact</a></li>
-                    <li><a href="#" class="text-black text-decoration-none">Privacy Policy</a></li>
-                </ul>
-            </div>
-
-            <div class="col-md-4">
-                <h5>Follow Us</h5>
-                <!-- <a href="#" class="social-links text-black me-3"><i class="fab fa-facebook"></i></a> -->
-                <a href="https://www.linkedin.com/in/charuka-hansaja-756070346/" class="social-links text-black me-3"><i class="fab fa-linkedin"></i></a>
-                <a href="https://github.com/Charuka974" class="social-links text-black me-3"><i class="fab fa-github"></i></a>
-            </div>
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="footer-grid">
+      <div>
+        <a class="footer-brand-logo" href="/"><img src="/assets/images/hotel-logo-2.png" alt="Logo"><span class="footer-brand-name">Velvet Crown</span></a>
+        <p class="footer-brand-desc">Where prestige meets perfection. An icon of ultra-luxury hospitality.</p>
+        <div class="footer-social">
+          <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="#" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
         </div>
-
-        <div class="text-center py-3 mt-3 border-top">
-            <p class="mb-0">&copy; 2024 Velvet Crown. All Rights Reserved.</p>
-        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">Gallery</div>
+        <ul class="footer-links">
+          <li><a href="#" onclick="filterGallery('rooms')">Rooms &amp; Suites</a></li>
+          <li><a href="#" onclick="filterGallery('dining')">Dining &amp; Bars</a></li>
+          <li><a href="#" onclick="filterGallery('spa')">Spa &amp; Wellness</a></li>
+          <li><a href="#" onclick="filterGallery('pool')">Pool &amp; Outdoors</a></li>
+          <li><a href="#" onclick="filterGallery('events')">Events</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Explore</div>
+        <ul class="footer-links">
+          <li><a href="/pages/rooms-page.html">Rooms &amp; Suites</a></li>
+          <li><a href="/pages/experiences-page.html">Experiences</a></li>
+          <li><a href="/pages/events-page.html">Events</a></li>
+          <li><a href="/pages/offers-page.html">Offers</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Contact</div>
+        <ul class="footer-links">
+          <li><a href="tel:+94119999999">+94 11 999 9999</a></li>
+          <li><a href="mailto:reservations@velvetcrown.com">reservations@velvetcrown.com</a></li>
+        </ul>
+      </div>
     </div>
-</footer>
+    <div class="footer-bottom"><span>&copy; 2026 Velvet Crown Hotel. All rights reserved.</span></div>
+  </footer>
+</div>
 
-  <script 
-    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" 
-    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" 
-    crossorigin="anonymous">
-  </script>
+<!-- Lightbox -->
+<div id="lightbox">
+  <button id="lightbox-close" aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
+  <img id="lightbox-img" src="" alt="Gallery Image">
+</div>
+<button id="sound-toggle" aria-label="Toggle sound"><i class="fa-solid fa-volume-xmark"></i></button>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script>if(typeof gsap!=='undefined'){gsap.registerPlugin(ScrollTrigger);gsap.ScrollTrigger=ScrollTrigger;}</script>
+<script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js"></script>
+<script src="/js/main.js"></script>
+<script>
+// Gallery filter
+function filterGallery(category) {
+  document.querySelectorAll('.filter-tab').forEach(t => t.classList.remove('active'));
+  const tab = document.querySelector(`.filter-tab[data-filter="${category}"]`);
+  if (tab) tab.classList.add('active');
+  document.querySelectorAll('.gallery-item').forEach(item => {
+    item.style.display = (category === 'all' || item.dataset.category === category) ? '' : 'none';
+  });
+}
+
+document.querySelectorAll('#gallery-tabs .filter-tab').forEach(tab => {
+  tab.addEventListener('click', () => {
+    document.querySelectorAll('#gallery-tabs .filter-tab').forEach(t => t.classList.remove('active'));
+    tab.classList.add('active');
+    filterGallery(tab.dataset.filter);
+  });
+});
+
+// Staggered reveal for gallery items
+const galleryObs = new IntersectionObserver((entries) => {
+  entries.forEach((entry, i) => {
+    if (entry.isIntersecting) {
+      setTimeout(() => entry.target.classList.add('in-view'), 60);
+      galleryObs.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.08 });
+document.querySelectorAll('.gallery-item').forEach((el, i) => {
+  el.style.transitionDelay = (i % 6 * 0.07) + 's';
+  galleryObs.observe(el);
+});
+</script>
 </body>
 </html>
